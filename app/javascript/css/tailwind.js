@@ -3,7 +3,13 @@ const primary = "#ff753f";
 const secondary = "#3e81a5";
 
 module.exports = {
-  purge: [],
+  purge: [
+    "./app/**/.html.erb",
+    "./app/helpers/**/*.rb",
+    "./app/javascript/**/*.js",
+    "./app/javascript/**/*.vue",
+    "./app/javascript/**/*.jsx",
+  ],
   theme: {
     extend: {},
     backgroundColor: theme => ({

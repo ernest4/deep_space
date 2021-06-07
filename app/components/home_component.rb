@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class HomeComponent < ApplicationComponent
-  def initialize(users:)
-    @users = users
+  def initialize(user_counts:)
+    @user_counts = user_counts
     # TODO: get counts users => {:now => ..., :last_24h => ..., :all_time => ...}
   end
 
