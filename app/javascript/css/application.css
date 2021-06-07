@@ -1,0 +1,15 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+/* reusable component imports here */
+/* @import "./color.css"; */
+/* @import "./layout.css"; */
+/* @import "./text.css"; */
+/* @import "./button.css"; */
+/* @import "./container.css"; */
+/* @import "./card.css"; */
+/* @import "./input.css"; */
+/* @import "./zindex.css"; */
+/* @import "./pill.css"; */
+
+@import "tailwindcss/utilities";
