@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   # TODO: specs
+  scope :online, -> { where(:online => true) }
+
+  # TODO: specs
   scope :last_online, lambda { |since|
     where("last_online > ?", since)
   }

@@ -5,6 +5,7 @@ const secondary = "#3e81a5";
 module.exports = {
   purge: [
     "./app/**/.html.erb",
+    "./app/components/**/*.rb",
     "./app/helpers/**/*.rb",
     "./app/javascript/**/*.js",
     "./app/javascript/**/*.vue",

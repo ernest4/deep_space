@@ -9,6 +9,7 @@ class HomeComponent < ApplicationComponent
   def c_render
     c_div(:class => "bg-red-500", :data => { :some => "attribute" }) do
       c "wow"
+      c "ENV: #{Rails.env}"
       c_div do
         "testy 123"
       end
