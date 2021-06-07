@@ -1,0 +1,6 @@
+TODO:
+
+[1] nihilore music from top-fuel-spacer!
+[2] finish gemfile gems set up
+[3] logged out page
+[4] ...
