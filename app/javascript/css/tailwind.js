@@ -3,14 +3,23 @@ const primary = "hsl(20deg 75% 58%)"; // orange
 const secondary = "hsl(200deg 75% 58%)"; // blue
 
 module.exports = {
-  purge: [
-    "./app/**/.html.erb",
-    "./app/components/**/*.rb",
-    "./app/helpers/**/*.rb",
-    "./app/javascript/**/*.js",
-    "./app/javascript/**/*.vue",
-    "./app/javascript/**/*.jsx",
-  ],
+  purge: {
+    content: [
+      "./app/**/.html.erb",
+      "./app/components/**/*.rb",
+      "./app/helpers/**/*.rb",
+      "./app/javascript/**/*.js",
+      "./app/javascript/**/*.vue",
+      "./app/javascript/**/*.jsx",
+    ],
+    // These options are passed through directly to PurgeCSS
+    options: {
+      safelist: ["ds-bg-deep-space-blue"],
+      // blocklist: [/^debug-/],
+      // keyframes: true,
+      // fontFace: true,
+    },
+  },
   theme: {
     extend: {},
     backgroundColor: theme => ({

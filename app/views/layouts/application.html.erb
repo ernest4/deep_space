@@ -13,6 +13,9 @@
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <!-- NOTE! any style added to body tag needs to be added to
+       tailwind.js -> purge -> options -> safelist as there seems to be some weird bug where
+       PurgeCSS ignores the classes in the body tag ... -->
   <body class="ds-bg-deep-space-blue">
     <div class="ds-global-container">
     <!-- TODO: spacer for fixed navbar -->
