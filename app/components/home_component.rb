@@ -37,6 +37,7 @@ class HomeComponent < ApplicationComponent
 
   def features
     UI::CardComponent.new(
+      :header => span("testy custom element", :class => "font-normal"),
       :body => capture do
         c span("features wip", :class => "ds-text")
         c span("features wip primary", :class => "ds-text-primary")

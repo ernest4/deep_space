@@ -18,11 +18,15 @@ module UI
       end
     end
 
+    private
+
     def header
       return if @header.blank?
 
       capture do
-        c @header
+        c div(:class => "ds-text font-bold") {
+          c @header
+        }
         c div(:class => "pt-2")
         c UI::LineComponent.new
         c div(:class => "pt-2")
@@ -36,7 +40,9 @@ module UI
         c div(:class => "pt-2")
         c UI::LineComponent.new
         c div(:class => "pt-2")
-        c @footer
+        c div(:class => "ds-text italic text-gray-400") {
+          c @footer
+        }
       end
     end
   end

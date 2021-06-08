@@ -3,4 +3,7 @@ TODO:
 [1] nihilore music from top-fuel-spacer!
 [2] finish gemfile gems set up
 [3] logged out page
-[4] ...
+[4] navbar
+[4.1] profile menu
+[5] google login
+[6] ...
