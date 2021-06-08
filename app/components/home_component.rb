@@ -28,15 +28,14 @@ class HomeComponent < ApplicationComponent
   private
 
   def banner
+    # TODO: i think i can drop the "c_" part ....
     c_div(:class => "ds-container") do
       "banner wip"
     end
   end
 
   def player_counts(user_counts)
-    c_div(:class => "ds-container") do
-      c(user_counts.to_s)
-    end
+    c CardComponent.new(:header => "Online Users", :body => user_counts.to_s)
   end
 
   def features
