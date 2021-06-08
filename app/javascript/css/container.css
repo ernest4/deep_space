@@ -1,6 +1,6 @@
 @layer components {
   .ds-global-container {
-    @apply lg:container lg:mx-auto xl:px-32 2xl:px-64;
+    @apply lg:container lg:mx-auto px-4 xl:px-32 2xl:px-64;
   }
   .ds-container {
     @apply px-4 border-2 border-secondary rounded-lg rounded-tl rounded-br ds-text;

@@ -17,13 +17,13 @@ class HomeComponent < ApplicationComponent
   private
 
   def jumbotron
-    div(:class => "ds-container") do
-      c "jumbotron wip"
-    end
+    UI::CardComponent.new(
+      :body => "jumbotron wip"
+    )
   end
 
   def player_counts(user_counts)
-    CardComponent.new(
+    UI::CardComponent.new(
       :header => "Players",
       :body => div do
         c user_counts.to_s
@@ -33,10 +33,12 @@ class HomeComponent < ApplicationComponent
   end
 
   def features
-    div(:class => "ds-container") do
-      c span("features wip", :class => "ds-text")
-      c span("features wip primary", :class => "ds-text-primary")
-      c span("features wip secondary", :class => "ds-text-secondary")
-    end
+    UI::CardComponent.new(
+      :body => capture do
+        c span("features wip", :class => "ds-text")
+        c span("features wip primary", :class => "ds-text-primary")
+        c span("features wip secondary", :class => "ds-text-secondary")
+      end
+    )
   end
 end
