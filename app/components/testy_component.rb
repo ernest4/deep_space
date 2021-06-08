@@ -1,5 +1,5 @@
 class TestyComponent < ApplicationComponent
-  def c_render
+  def call
     c "testy component here"
   end
 end

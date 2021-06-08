@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+# TODO: seed with game specific initial data.
+# TODO: build admin front end to edit / add more stuff to DB to facilitate content generation.

@@ -1,27 +1,29 @@
 class CardComponent < ApplicationComponent
-  def initialize(header: nil, &children)
+  def initialize(body:, header: nil, footer: nil)
     @header = header
-    @children = children
+    @body = body
+    @footer = footer
   end
 
-  def c_render
-    div(:class => "ds-container ds-text") do
-      c @header
-      line if @header.present?
-      c @children.call
+  def call
+    div(:class => "ds-container") do
+      c header
+      c @body
+      c footer
     end
   end
 
-  def line
-    div(:class => "bg-secondary h-px")
+  def header
+    capture do
+      c @header if @header.present?
+      c (UI::LineComponent.new) if @header.present?
+    end
+  end
+
+  def footer
+    capture do
+      c (UI::LineComponent.new) if @footer.present?
+      c @footer
+    end
   end
 end
-
-
-# bit confusing, some stuff (tags) auto concats because of reactified concern
-# but then other things dont concat automatically, but if reactified tag will be used
-# it WILL autoconcat and then might autoconcat again causing duplication...
-
-# NEED to either definitevely resolve Reactified so concat is never needed when writing
-# component, OR ALWAYS concat manually in component render and simplify reactified
-# concern. Both not gonna work same time !!!

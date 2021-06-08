@@ -3,11 +3,11 @@
     @apply lg:container lg:mx-auto xl:px-32 2xl:px-64;
   }
   .ds-container {
-    @apply px-4 border-2 border-secondary rounded-lg rounded-tl rounded-br;
+    @apply px-4 border-2 border-secondary rounded-lg rounded-tl rounded-br ds-text;
   }
   @screen lg {
     .ds-container {
-      @apply px-8 border-2 border-secondary rounded-lg rounded-tl rounded-br;
+      @apply px-8 border-2 border-secondary rounded-lg rounded-tl rounded-br ds-text;
     }
   }
 }

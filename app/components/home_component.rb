@@ -5,46 +5,38 @@ class HomeComponent < ApplicationComponent
     @user_counts = user_counts
   end
 
-  def c_render
-    div(:class => "pt-2 bg-blue-500")
-    jumbotron
-    c player_counts(@user_counts)
-    features
-    # div(:class => "bg-red-500", :data => { :some => "attribute" }) do
-    #   c "wow"
-    #   c "ENV: #{Rails.env}"
-    #   div do
-    #     "testy 123"
-    #   end
-    #   c TestyComponent.new
-    #   c TestyComponent.new
-    #   c [TestyComponent.new, TestyComponent.new]
-    #   span do
-    #     "testy 456"
-    #   end
-    # end
+  def call
+    capture do
+      c div(:class => "pt-2 bg-blue-500")
+      c jumbotron
+      c player_counts(@user_counts)
+      c features
+    end
   end
 
   private
 
   def jumbotron
-    # TODO: i think i can drop the "" part ....
     div(:class => "ds-container") do
-      "jumbotron wip"
+      c "jumbotron wip"
     end
   end
 
   def player_counts(user_counts)
-    CardComponent.new(:header => "Online Users") do
-      user_counts.to_s
-    end
+    CardComponent.new(
+      :header => "Players",
+      :body => div do
+        c user_counts.to_s
+      end,
+      :footer => span("testy spanny footery")
+    )
   end
 
   def features
     div(:class => "ds-container") do
-      span("features wip", :class => "ds-text")
-      span("features wip primary", :class => "ds-text-primary")
-      span("features wip secondary", :class => "ds-text-secondary")
+      c span("features wip", :class => "ds-text")
+      c span("features wip primary", :class => "ds-text-primary")
+      c span("features wip secondary", :class => "ds-text-secondary")
     end
   end
 end

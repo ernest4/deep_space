@@ -1,8 +1,8 @@
 class NavbarComponent < ApplicationComponent
-  def c_render
+  def call
     div(:class => "bg-red-500 fixed top-0 w-screen") do
-      div(:class => "ds-global-container") do
-        home_icon
+      c div(:class => "ds-global-container") do
+        c home_icon
         # outlier_studio
         # # youtube # TODO: once you have at least 1 video
         # twitter
@@ -16,7 +16,7 @@ class NavbarComponent < ApplicationComponent
   private
 
   def home_icon
-    c link_to("deep space", "/", :class => "wip_TODO")
+    link_to("deep space", "/", :class => "wip_TODO")
   end
 end
 
