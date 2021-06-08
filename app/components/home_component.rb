@@ -6,20 +6,20 @@ class HomeComponent < ApplicationComponent
   end
 
   def c_render
-    c_div(:class => "pt-2 bg-blue-500")
-    banner
-    player_counts(@user_counts)
+    div(:class => "pt-2 bg-blue-500")
+    jumbotron
+    c player_counts(@user_counts)
     features
-    # c_div(:class => "bg-red-500", :data => { :some => "attribute" }) do
+    # div(:class => "bg-red-500", :data => { :some => "attribute" }) do
     #   c "wow"
     #   c "ENV: #{Rails.env}"
-    #   c_div do
+    #   div do
     #     "testy 123"
     #   end
     #   c TestyComponent.new
     #   c TestyComponent.new
     #   c [TestyComponent.new, TestyComponent.new]
-    #   c_span do
+    #   span do
     #     "testy 456"
     #   end
     # end
@@ -27,22 +27,24 @@ class HomeComponent < ApplicationComponent
 
   private
 
-  def banner
-    # TODO: i think i can drop the "c_" part ....
-    c_div(:class => "ds-container") do
-      "banner wip"
+  def jumbotron
+    # TODO: i think i can drop the "" part ....
+    div(:class => "ds-container") do
+      "jumbotron wip"
     end
   end
 
   def player_counts(user_counts)
-    c CardComponent.new(:header => "Online Users", :body => user_counts.to_s)
+    CardComponent.new(:header => "Online Users") do
+      user_counts.to_s
+    end
   end
 
   def features
-    c_div(:class => "ds-container") do
-      c_span("features wip", :class => "ds-text")
-      c_span("features wip primary", :class => "ds-text-primary")
-      c_span("features wip secondary", :class => "ds-text-secondary")
+    div(:class => "ds-container") do
+      span("features wip", :class => "ds-text")
+      span("features wip primary", :class => "ds-text-primary")
+      span("features wip secondary", :class => "ds-text-secondary")
     end
   end
 end

@@ -7,7 +7,7 @@ module Reactified
   # delegate :div, :span, :br, :button, :img, :form, :to => :tag
 
   TAGS = [:div, :span, :br, :button, :img, :form].freeze
-  RENDER_TAGS = TAGS.map { |regular_tag| "c_#{regular_tag}".to_sym }.freeze
+  # RENDER_TAGS = TAGS.map { |regular_tag| "c_#{regular_tag}".to_sym }.freeze
 
   included do
     # def cc(*elements)
@@ -27,7 +27,8 @@ module Reactified
     end
 
     def respond_to_missing?(method_name, include_private = false)
-      method_name.to_s.start_with?('c_') || super
+      # method_name.to_s.start_with?('c_') || super
+      super
     end
 
     def call
@@ -38,23 +39,25 @@ module Reactified
   end
 
   def expected_tag?(method)
-    RENDER_TAGS.any?(method)
+    # RENDER_TAGS.any?(method)
+    TAGS.any?(method)
   end
 
   def handle_tag(method, *args, &block)
-    raw_tag = strip_tag_prefix(method)
-    c(tag.send(raw_tag, *args, &block))
+    # raw_tag = strip_tag_prefix(method)
+    # c(tag.send(raw_tag, *args, &block))
+    c(tag.send(method, *args, &block))
   end
 
-  def strip_tag_prefix(tag_name)
-    tag_name[2..]
-  end
+  # def strip_tag_prefix(tag_name)
+  #   tag_name[2..]
+  # end
 
-  def children
-    return normalize_element(@children) unless @children.is_a?(Array)
+  # def children
+  #   return normalize_element(@children) unless @children.is_a?(Array)
 
-    @children.map { |child| normalize_element(child) }
-  end
+  #   @children.map { |child| normalize_element(child) }
+  # end
 
   def normalize_element(element)
     element&.respond_to?(:render_in) ? render(element) : element
