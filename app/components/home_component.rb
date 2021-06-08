@@ -8,8 +8,11 @@ class HomeComponent < ApplicationComponent
   def call
     capture do
       c div(:class => "pt-2 bg-blue-500")
+      c div(:class => "pt-4")
       c jumbotron
+      c div(:class => "pt-4")
       c player_counts(@user_counts)
+      c div(:class => "pt-4")
       c features
     end
   end

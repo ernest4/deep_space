@@ -10,22 +10,32 @@ module UI
 
     def call
       div(:class => "ds-container") do
+        c div(:class => "pt-2")
         c header
         c @body
         c footer
+        c div(:class => "pt-2")
       end
     end
 
     def header
+      return if @header.blank?
+
       capture do
-        c @header if @header.present?
-        c UI::LineComponent.new if @header.present?
+        c @header
+        c div(:class => "pt-2")
+        c UI::LineComponent.new
+        c div(:class => "pt-2")
       end
     end
 
     def footer
+      return if @footer.blank?
+
       capture do
-        c UI::LineComponent.new if @footer.present?
+        c div(:class => "pt-2")
+        c UI::LineComponent.new
+        c div(:class => "pt-2")
         c @footer
       end
     end
