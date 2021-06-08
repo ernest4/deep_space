@@ -2,9 +2,10 @@
 @import "tailwindcss/components";
 
 /* reusable component imports here */
-/* @import "./color.css"; */
+@import "./color.css";
 /* @import "./layout.css"; */
-/* @import "./text.css"; */
+
+@import "./text.css";
 /* @import "./button.css"; */
 @import "./container.css";
 /* @import "./card.css"; */

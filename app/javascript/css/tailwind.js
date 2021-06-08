@@ -1,6 +1,6 @@
 // TODO: change these colors!
-const primary = "#ff753f";
-const secondary = "#3e81a5";
+const primary = "hsl(20deg 75% 58%)"; // orange
+const secondary = "hsl(200deg 75% 58%)"; // blue
 
 module.exports = {
   purge: [

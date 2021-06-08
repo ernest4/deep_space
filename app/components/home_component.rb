@@ -41,7 +41,9 @@ class HomeComponent < ApplicationComponent
 
   def features
     c_div(:class => "ds-container") do
-      "features wip"
+      c_span("features wip", :class => "ds-text")
+      c_span("features wip primary", :class => "ds-text-primary")
+      c_span("features wip secondary", :class => "ds-text-secondary")
     end
   end
 end
