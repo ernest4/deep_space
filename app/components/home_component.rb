@@ -36,13 +36,13 @@ class HomeComponent < ApplicationComponent
         c "Build yourself and your galactic empire your way with other "
         c span("players", :class => "ds-text-secondary")
         c " around the world. Form "
-        c span("alliances", :class => "ds-text-tertiary") # TODO: need better, more convenient utilities for this
+        c span("alliances", :class => "ds-text-tertiary")
         c ", "
-        c span("trade", :class => "ds-text-tertiary") # TODO: need better, more convenient utilities for this
+        c span("trade", :class => "ds-text-tertiary")
         c ", "
-        c span("fight", :class => "ds-text-tertiary") # TODO: need better, more convenient utilities for this
+        c span("fight", :class => "ds-text-tertiary")
         c " and "
-        c span("discover", :class => "ds-text-tertiary") # TODO: need better, more convenient utilities for this
+        c span("discover", :class => "ds-text-tertiary")
         c " the mysteries of deep dark space."
         c br
         c br
@@ -77,12 +77,39 @@ class HomeComponent < ApplicationComponent
   end
 
   def features
+    feature_lists = {
+      :available => {
+        :subtitle => "",
+        :features => [
+          { :title => "feature one", :description => "lorem ipsum" },
+          { :title => "feature two", :description => "lorem ipsum" }
+        ]
+      },
+      :planned => {
+        :subtitle => "Subject to change / addition / removal",
+        :features => [
+          { :title => "feature one", :description => "lorem ipsum" },
+          { :title => "feature two", :description => "lorem ipsum" }
+        ]
+      }
+    }
     UI::CardComponent.new(
-      :header => span("testy custom element", :class => "font-normal"),
-      :body => capture do
-        c span("features wip", :class => "ds-text")
-        c span("features wip primary", :class => "ds-text-primary")
-        c span("features wip secondary", :class => "ds-text-secondary")
+      :header => span("Features", :class => "font-bold"),
+      :body => div do
+        feature_lists.each do |feature_list_name, feature_list|
+          c span(feature_list_name.capitalize, :class => "sv-text font-bold")
+          if feature_list[:subtitle].present?
+            c div(feature_list[:subtitle], :class => "ds-text italic text-gray-400 text-sm")
+          end
+
+          c div(:class => "pt-2")
+          feature_list[:features].each do |feature|
+            c div(:class => "pt-2")
+            c div(feature[:title], :class => "ds-text-secondary")
+            c div(feature[:description], :class => "ds-text text-sm")
+          end
+          c div(:class => "pt-8")
+        end
       end
     )
   end
