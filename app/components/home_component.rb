@@ -53,21 +53,23 @@ class HomeComponent < ApplicationComponent
 
   def player_counts(user_counts)
     UI::CardComponent.new(
-      :header => "Players",
+      :header => "Players Online",
       :body => div(:class => "flex justify-between") do
         user_counts.each_with_index do |user_count, index|
           type, count = user_count
 
-          # TODO: need to figure out how to space this text formatting properly...
-          c div(:class => "flex justify-between") {
-            c span("Online")
-            c span(" ") # TODO: need better, more convenient utilities for this
-            c span(type.to_s.split("_").join(" "))
-            c span(":")
+          c span {
+            c span(type.to_s.split("_").join(" "), :class => "ds-text-secondary")
+            c " : "
             c span(count, :class => "sv-text font-bold")
           }
 
-          c UI::LineComponent.new(:vertical => true) unless index == user_counts.size - 1
+          next if index == user_counts.size - 1
+
+          c div(:class => "flex") {
+            c UI::LineComponent.new(:vertical => true)
+            c span(:class => "pr-2")
+          }
         end
       end,
       :footer => span("The game is in early stages of development. Why not invite your friends to play together?")
