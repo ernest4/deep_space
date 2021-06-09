@@ -1,6 +1,7 @@
 // TODO: change these colors!
 const primary = "hsl(20deg 75% 58%)"; // orange
 const secondary = "hsl(200deg 75% 58%)"; // blue
+const tertiary = "hsl(43deg 97% 56%)"; // yellow
 
 module.exports = {
   purge: {
@@ -26,6 +27,7 @@ module.exports = {
       ...theme("colors"),
       primary,
       secondary,
+      tertiary,
       // danger: "#e3342f",
     }),
     borderColor: theme => ({
@@ -33,12 +35,14 @@ module.exports = {
       // default: theme("colors.gray.300", "currentColor"),
       primary,
       secondary,
+      tertiary,
       // danger: "#e3342f",
     }),
     textColor: theme => ({
       ...theme("colors"),
       primary,
       secondary,
+      tertiary,
       // danger: "#e3342f",
     }),
   },

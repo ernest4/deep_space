@@ -40,7 +40,7 @@ module UI
         c div(:class => "pt-2")
         c UI::LineComponent.new
         c div(:class => "pt-2")
-        c div(:class => "ds-text italic text-gray-400") {
+        c div(:class => "ds-text italic text-gray-400 text-sm") {
           c @footer
         }
       end

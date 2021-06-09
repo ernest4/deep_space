@@ -21,17 +21,56 @@ class HomeComponent < ApplicationComponent
 
   def jumbotron
     UI::CardComponent.new(
-      :body => "jumbotron wip"
+      :header => "About",
+      :body => div do
+        c span("Deep Space (DS)", :class => "ds-text-primary")
+        c " is a text based MMORPG set in Milky Way Galaxy. You are the "
+        c span("commander", :class => "ds-text-secondary")
+        c " of your fleet of "
+        c span("ships", :class => "ds-text-tertiary")
+        c " and colonizer of "
+        c span("planets", :class => "ds-text-tertiary")
+        c "."
+        c br
+        c br
+        c "Build yourself and your galactic empire your way with other "
+        c span("players", :class => "ds-text-secondary")
+        c " around the world. Form "
+        c span("alliances", :class => "ds-text-tertiary") # TODO: need better, more convenient utilities for this
+        c ", "
+        c span("trade", :class => "ds-text-tertiary") # TODO: need better, more convenient utilities for this
+        c ", "
+        c span("fight", :class => "ds-text-tertiary") # TODO: need better, more convenient utilities for this
+        c " and "
+        c span("discover", :class => "ds-text-tertiary") # TODO: need better, more convenient utilities for this
+        c " the mysteries of deep dark space."
+        c br
+        c br
+        c "Lead the way, commander!" # TODO: make this a button.
+      end
     )
   end
 
   def player_counts(user_counts)
     UI::CardComponent.new(
       :header => "Players",
-      :body => div do
-        c user_counts.to_s
+      :body => div(:class => "flex justify-between") do
+        user_counts.each_with_index do |user_count, index|
+          type, count = user_count
+
+          # TODO: need to figure out how to space this text formatting properly...
+          c div(:class => "flex justify-between") {
+            c span("Online")
+            c span(" ") # TODO: need better, more convenient utilities for this
+            c span(type.to_s.split("_").join(" "))
+            c span(":")
+            c span(count, :class => "sv-text font-bold")
+          }
+
+          c UI::LineComponent.new(:vertical => true) unless index == user_counts.size - 1
+        end
       end,
-      :footer => span("testy spanny footery")
+      :footer => span("The game is in early stages of development. Why not invite your friends to play together?")
     )
   end
 

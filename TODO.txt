@@ -6,4 +6,5 @@ TODO:
 [4] navbar
 [4.1] profile menu
 [5] google login
-[6] ...
+[6] customizable in game avatars
+[7] ...
