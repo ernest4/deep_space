@@ -81,6 +81,7 @@ class HomeComponent < ApplicationComponent
       :available => {
         :subtitle => "Subject to improvements / expansions ",
         :features => [
+          { :title => "Gratis", :description => "Deep Space is and always will be free to play." },
           { :title => "Single Universe", :description => "A single database (shard) means all
           players share the same game, no artificial segregation of populations." },
           { :title => "Galaxy Map", :description => "Explore the shared galaxy with interstellar travel." },
@@ -92,15 +93,34 @@ class HomeComponent < ApplicationComponent
           { :title => "Construction", :description => "Build resource extractors and infrastructure
           to get more resources. Use resources to supply and enlarge your fleets." },
           { :title => "Trade Routes", :description => "Set up trade routes to move goods around your
-          empire." }
+          empire." },
+          { :title => "Rogue-lite", :description => "Fleet combat is turn based, destroyed ships are
+          permanently lost, decisions carry consequences, all resources in possession are finite and
+          continuously consumed, location control can be gained and lost etc." },
+          { :title => "Menacing Machines", :description => "These rogue robots of unknown origin
+          and unknown purpose are widespread throughout the galaxy. They seem to attack any organic
+          life on sight. Fight them when you can...run when you have to..." },
         ]
       },
       :planned => {
-        :subtitle => "Subject to changes",
+        :subtitle => "Subject to changes, in no particular order",
         :features => [
+          { :title => "Missions", :description => "Respond to distress beacons, seek hidden
+          artifacts of the Ancient Ones, fight the Menacing Machines and solve the biggest
+          mysteries at the centre of the galaxy." },
           { :title => "Research", :description => "Research tech tree allows you improve everything
           and anything." },
-          { :title => "feature two", :description => "lorem ipsum" }
+          { :title => "Player Trade", :description => "Trade everything, resources, ships, planets etc." },
+          { :title => "Companies", :description => "Players can form companies, have other players
+          as employees and list shares on stock exchange." },
+          { :title => "Stock Market", :description => "Players can buy / sell shares of other
+          players' companies." },
+          { :title => "Alliances", :description => "Create or join an alliance of players to
+          socialize, share resources and battle other alliances." },
+          { :title => "Field Commander", :description => "You as the commander can join the
+          battlefield. Like a king in Chess, fatal destruction of a commander's vessel means
+          immediate loss. Additional penalty is that the commander is blasted into space in a cryo escape pod, waiting to be rescued by the search party. This imposes a cooldown, before commander can be retrieved. Other players may send a search party to rescue and speed things up. commanders presence on battlefield boosts stats of commanders ships. commander can be on board any ship during battle, but cannot change ships mid battle. If commander's vessel leaves combat, ships receive a penalty to their stats (morale drop)." },
+          { :title => "feature two", :description => "lorem ipsum" },
         ]
       }
     }
