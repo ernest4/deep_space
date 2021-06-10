@@ -1,5 +1,7 @@
 TODO:
 
+[DONE][0] get a new font, the capital D in Orbitron is too close to capital O. practically can't tell them apart
+
 [1] nihilore music from top-fuel-spacer!
 [2] finish gemfile gems set up
 [3] logged out page

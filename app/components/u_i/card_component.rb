@@ -24,7 +24,7 @@ module UI
       return if @header.blank?
 
       capture do
-        c div(:class => "ds-text font-bold") {
+        c div(:class => "ds-text-secondary font-bold") {
           c @header
         }
         c div(:class => "pt-2")

@@ -79,16 +79,27 @@ class HomeComponent < ApplicationComponent
   def features
     feature_lists = {
       :available => {
-        :subtitle => "",
+        :subtitle => "Subject to improvements / expansions ",
         :features => [
-          { :title => "feature one", :description => "lorem ipsum" },
-          { :title => "feature two", :description => "lorem ipsum" }
+          { :title => "Single Universe", :description => "A single database (shard) means all
+          players share the same game, no artificial segregation of populations." },
+          { :title => "Galaxy Map", :description => "Explore the shared galaxy with interstellar travel." },
+          { :title => "Combat", :description => "Engage your fleets against those of other players
+          to win control of stars and planets." },
+          { :title => "Conquest", :description => "Gain control of locations like planets, stars,
+           asteroids etc. to expand your galactic empire. Each player owns a controlling share of
+           any given location. Fight more to control more." },
+          { :title => "Construction", :description => "Build resource extractors and infrastructure
+          to get more resources. Use resources to supply and enlarge your fleets." },
+          { :title => "Trade Routes", :description => "Set up trade routes to move goods around your
+          empire." }
         ]
       },
       :planned => {
-        :subtitle => "Subject to change / addition / removal",
+        :subtitle => "Subject to changes",
         :features => [
-          { :title => "feature one", :description => "lorem ipsum" },
+          { :title => "Research", :description => "Research tech tree allows you improve everything
+          and anything." },
           { :title => "feature two", :description => "lorem ipsum" }
         ]
       }
