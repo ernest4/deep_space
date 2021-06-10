@@ -84,6 +84,11 @@ class HomeComponent < ApplicationComponent
           { :title => "Gratis", :description => "Deep Space is and always will be free to play." },
           { :title => "Single Universe", :description => "A single database (shard) means all
           players share the same game, no artificial segregation of populations." },
+          { :title => "Influence Development", :description => div {
+            c "Join "
+            c link_to(nil, "Discord", :href => "https://discord.gg/4QXZw5Xvz5", :class => "ds-link-tertiary text-sm", :target => "_blank")
+            c " chat to track development, report bugs and make feature requests."
+          } },
           { :title => "Galaxy Map", :description => "Explore the shared galaxy with interstellar travel." },
           { :title => "Combat", :description => "Engage your fleets against those of other players
           to win control of stars and planets." },

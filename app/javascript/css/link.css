@@ -1,0 +1,23 @@
+@layer components {
+  .ds-link {
+    @apply ds-text underline;
+  }
+  /* .ds-link-muted {
+    @apply ds-text text-gray-600;
+  } */
+  .ds-link-primary {
+    @apply ds-link text-primary;
+  }
+  /* .ds-link-primary-hover:hover {
+    @apply ds-text ds-color-primary;
+  } */
+  .ds-link-secondary {
+    @apply ds-link text-secondary;
+  }
+  /* .ds-link-secondary-hover:hover {
+    @apply ds-text ds-color-secondary;
+  } */
+  .ds-link-tertiary {
+    @apply ds-link text-tertiary;
+  }
+}
