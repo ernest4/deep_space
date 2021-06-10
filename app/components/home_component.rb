@@ -89,6 +89,8 @@ class HomeComponent < ApplicationComponent
             c link_to(nil, "Discord", :href => "https://discord.gg/4QXZw5Xvz5", :class => "ds-link-tertiary text-sm", :target => "_blank")
             c " chat to track development, report bugs and make feature requests."
           } },
+          { :title => "Commander", :description => "You are the commander. Level up and command
+           bigger more powerful fleets." },
           { :title => "Galaxy Map", :description => "Explore the shared galaxy with interstellar travel." },
           { :title => "Combat", :description => "Engage your fleets against those of other players
           to win control of stars and planets." },
@@ -102,9 +104,8 @@ class HomeComponent < ApplicationComponent
           { :title => "Rogue-lite", :description => "Fleet combat is turn based, destroyed ships are
           permanently lost, decisions carry consequences, all resources in possession are finite and
           continuously consumed, location control can be gained and lost etc." },
-          { :title => "Menacing Machines", :description => "These rogue robots of unknown origin
-          and unknown purpose are widespread throughout the galaxy. They seem to attack any organic
-          life on sight. Fight them when you can...run when you have to..." },
+          { :title => "Menacing Machines", :description => "Fight against the rogue AI robots out to
+           destroy all organics for reasons not yet known." },
         ]
       },
       :planned => {
@@ -134,10 +135,20 @@ class HomeComponent < ApplicationComponent
           { :title => "Reinforcements", :description => "Ships from nearby friendly areas can be
           warped in. Warp in will take number of turns and once at the battlefield, players will
           need to swap out existing ship(s)." },
-          { :title => "Experimental Tech ", :description => "Research, develop and utilize bleeding
-           edge unstable tech. Higher stats but at the cost of potential catastrophic failure." },
-          { :title => "feature two", :description => "lorem ipsum" },
-          { :title => "feature two", :description => "lorem ipsum" },
+          { :title => "Experimental Tech ", :description => "Research and develop experimental
+          technology that has a chance of blowing up in your face in the worst case and blowing away
+           your opponent in the best case." },
+          { :title => "Treasure Hunt", :description => "Space pirates haven't evolved that much,
+          they still like to hide their treasure in random places to be forgotten and rediscovered." },
+          { :title => "Prestige", :description => "Prestige starts a new play-through after reaching
+           the centre of Galaxy. Earn rewards that persist through Prestiges." },
+          { :title => "Space Racers", :description => "Develop a Space Racing. Recruit and train
+           your racers and supporting team. Enter into competitions for prizes in racing
+           tournaments. Spectate and bet on races." },
+          { :title => "Milky Millions", :description => "Play in-game lottery. A winner is
+          guaranteed every month." },
+          { :title => "The Void", :description => "Catch up on Galaxy wide news, on the in game
+          newspaper 'The Void'." }
         ]
       }
     }
