@@ -123,8 +123,20 @@ class HomeComponent < ApplicationComponent
           { :title => "Alliances", :description => "Create or join an alliance of players to
           socialize, share resources and battle other alliances." },
           { :title => "Field Commander", :description => "You as the commander can join the
-          battlefield. Like a king in Chess, fatal destruction of a commander's vessel means
-          immediate loss. Additional penalty is that the commander is blasted into space in a cryo escape pod, waiting to be rescued by the search party. This imposes a cooldown, before commander can be retrieved. Other players may send a search party to rescue and speed things up. commanders presence on battlefield boosts stats of commanders ships. commander can be on board any ship during battle, but cannot change ships mid battle. If commander's vessel leaves combat, ships receive a penalty to their stats (morale drop)." },
+          battlefield to boost your fleet's stats. Like a king in Chess, fatal destruction of
+          commander's vessel means immediate loss of the battle." },
+          { :title => "Sub-Commanders", :description => "Each ship has a distinct NPC sub-commander
+          with RNG stats and unique personality and expertise. Hire, Fire & Retire sub-commanders." },
+          { :title => "Group PVP", :description => "Players can PVP in groups of two or more.
+          PVP does not need to be symmetric, two or more players can fight against one opponent.
+          The ship strength will be matched however, meaning side with more players brings less
+          ships per player." },
+          { :title => "Reinforcements", :description => "Ships from nearby friendly areas can be
+          warped in. Warp in will take number of turns and once at the battlefield, players will
+          need to swap out existing ship(s)." },
+          { :title => "Experimental Tech ", :description => "Research, develop and utilize bleeding
+           edge unstable tech. Higher stats but at the cost of potential catastrophic failure." },
+          { :title => "feature two", :description => "lorem ipsum" },
           { :title => "feature two", :description => "lorem ipsum" },
         ]
       }
