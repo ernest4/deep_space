@@ -16,7 +16,7 @@ class NavbarComponent < ApplicationComponent
   private
 
   def home_icon
-    link_to("deep space", "/", :class => "wip_TODO")
+    link_to(Constants::GAME_NAME, "/", :class => "wip_TODO")
   end
 end
 

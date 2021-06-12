@@ -23,7 +23,7 @@ class HomeComponent < ApplicationComponent
     UI::CardComponent.new(
       :header => "About",
       :body => div do
-        c span("Deep Space (DS)", :class => "ds-text-primary")
+        c span("#{Constants::GAME_NAME} (#{Constants::GAME_NAME_ACRONYM})", :class => "ds-text-primary")
         c " is a text based MMORPG set in Milky Way Galaxy. You are the "
         c span("commander", :class => "ds-text-secondary")
         c " of your fleet of "
@@ -46,7 +46,9 @@ class HomeComponent < ApplicationComponent
         c " the mysteries of deep dark space."
         c br
         c br
-        c "Lead the way, commander!" # TODO: make this a button.
+        c "Lead the way, commander!"
+        c div(:class => "pt-2")
+        c GoogleSignInButtonComponent.new
       end
     )
   end
@@ -81,14 +83,14 @@ class HomeComponent < ApplicationComponent
       :available => {
         :subtitle => "Subject to improvements / expansions ",
         :features => [
-          { :title => "Gratis", :description => "Deep Space is and always will be free to play." },
+          { :title => "Gratis", :description => "#{Constants::GAME_NAME} is and always will be free to play." },
           { :title => "Single Universe", :description => "A single database (shard) means all
           players share the same game, no artificial segregation of populations." },
-          { :title => "Influence Development", :description => div {
+          { :title => "Influence Development", :description => div do
             c "Join "
-            c link_to(nil, "Discord", :href => "https://discord.gg/4QXZw5Xvz5", :class => "ds-link-tertiary text-sm", :target => "_blank")
+            c link_to(nil, "Discord", :href => "https://discord.gg/4QXZw5Xvz5", :class => "ds-link-tertiary text-sm", :target => "_blank", :rel => "noopener")
             c " chat to track development, report bugs and make feature requests."
-          } },
+          end },
           { :title => "Commander", :description => "You are the commander. Level up and command
            bigger more powerful fleets." },
           { :title => "Galaxy Map", :description => "Explore the shared galaxy with interstellar travel." },
@@ -105,7 +107,7 @@ class HomeComponent < ApplicationComponent
           permanently lost, decisions carry consequences, all resources in possession are finite and
           continuously consumed, location control can be gained and lost etc." },
           { :title => "Menacing Machines", :description => "Fight against the rogue AI robots out to
-           destroy all organics for reasons not yet known." },
+           destroy all organics for reasons not yet known." }
         ]
       },
       :planned => {

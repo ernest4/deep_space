@@ -33,6 +33,9 @@ gem 'bootsnap', '>= 1.4.4', :require => false
 
 gem 'view_component', :require => 'view_component/engine'
 
+# by Basecamp, should be very secure and dependable
+gem 'google_sign_in'
+
 # for processing jobs async in production
 gem 'sidekiq'
 gem 'sidekiq-cron'
