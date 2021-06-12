@@ -1,13 +1,19 @@
 @layer components {
-  .ds-global-container {
+  .g-global-container {
     @apply lg:container lg:mx-auto px-4 xl:px-32 2xl:px-64;
   }
-  .ds-container {
-    @apply px-4 border-2 border-secondary rounded-3xl rounded-tl-lg rounded-br-lg ds-text bg-blue-100 bg-opacity-10;
+  .g-container {
+    @apply px-4 border-2 border-secondary rounded-3xl rounded-tl-lg rounded-br-lg g-text bg-blue-100 bg-opacity-10;
+  }
+  .g-container-primary {
+    @apply g-container border-primary;
+  }
+  .g-container-danger {
+    @apply g-container border-danger;
   }
   @screen lg {
-    .ds-container {
-      @apply px-8 border-2 border-secondary rounded-3xl rounded-tl-lg rounded-br-lg ds-text bg-blue-100 bg-opacity-10;
+    .g-container {
+      @apply px-8 border-2 border-secondary rounded-3xl rounded-tl-lg rounded-br-lg g-text bg-blue-100 bg-opacity-10;
     }
   }
 }

@@ -1,23 +1,23 @@
 @layer components {
-  .ds-link {
-    @apply ds-text underline;
+  .g-link {
+    @apply g-text underline;
   }
-  /* .ds-link-muted {
-    @apply ds-text text-gray-600;
+  /* .g-link-muted {
+    @apply g-text text-gray-600;
   } */
-  .ds-link-primary {
-    @apply ds-link text-primary;
+  .g-link-primary {
+    @apply g-link text-primary;
   }
-  /* .ds-link-primary-hover:hover {
-    @apply ds-text ds-color-primary;
+  /* .g-link-primary-hover:hover {
+    @apply g-text g-color-primary;
   } */
-  .ds-link-secondary {
-    @apply ds-link text-secondary;
+  .g-link-secondary {
+    @apply g-link text-secondary;
   }
-  /* .ds-link-secondary-hover:hover {
-    @apply ds-text ds-color-secondary;
+  /* .g-link-secondary-hover:hover {
+    @apply g-text g-color-secondary;
   } */
-  .ds-link-tertiary {
-    @apply ds-link text-tertiary;
+  .g-link-tertiary {
+    @apply g-link text-tertiary;
   }
 }

@@ -1,7 +1,7 @@
 class NavbarComponent < ApplicationComponent
   def call
     div(:class => "bg-red-500 fixed top-0 w-screen") do
-      c div(:class => "ds-global-container") do
+      c div(:class => "g-global-container") do
         c home_icon
         # outlier_studio
         # # youtube # TODO: once you have at least 1 video

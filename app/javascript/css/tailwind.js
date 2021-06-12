@@ -2,6 +2,7 @@
 const primary = "hsl(20deg 75% 58%)"; // orange
 const secondary = "hsl(200deg 75% 58%)"; // blue
 const tertiary = "hsl(43deg 97% 56%)"; // yellow
+const danger = "hsl(2deg 76% 54%)"; // red
 
 module.exports = {
   purge: {
@@ -15,7 +16,7 @@ module.exports = {
     ],
     // These options are passed through directly to PurgeCSS
     options: {
-      safelist: ["ds-bg-deep-space-blue", "w-56"],
+      safelist: ["g-bg-deep-space-blue", "w-56"],
       // blocklist: [/^debug-/],
       // keyframes: true,
       // fontFace: true,
@@ -28,7 +29,7 @@ module.exports = {
       primary,
       secondary,
       tertiary,
-      // danger: "#e3342f",
+      danger,
     }),
     borderColor: theme => ({
       ...theme("colors"),
@@ -36,14 +37,14 @@ module.exports = {
       primary,
       secondary,
       tertiary,
-      // danger: "#e3342f",
+      danger,
     }),
     textColor: theme => ({
       ...theme("colors"),
       primary,
       secondary,
       tertiary,
-      // danger: "#e3342f",
+      danger,
     }),
   },
   variants: {

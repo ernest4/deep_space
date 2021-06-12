@@ -3,25 +3,28 @@
 }
 
 @layer components {
-  .ds-text {
+  .g-text {
     @apply text-gray-200 font-normal text-base;
   }
-  /* .ds-text-muted {
-    @apply ds-text text-gray-600;
+  /* .g-text-muted {
+    @apply g-text text-gray-600;
   } */
-  .ds-text-primary {
-    @apply ds-text text-primary;
+  .g-text-primary {
+    @apply g-text text-primary;
   }
-  /* .ds-text-primary-hover:hover {
-    @apply ds-text ds-color-primary;
+  /* .g-text-primary-hover:hover {
+    @apply g-text g-color-primary;
   } */
-  .ds-text-secondary {
-    @apply ds-text text-secondary;
+  .g-text-secondary {
+    @apply g-text text-secondary;
   }
-  /* .ds-text-secondary-hover:hover {
-    @apply ds-text ds-color-secondary;
+  /* .g-text-secondary-hover:hover {
+    @apply g-text g-color-secondary;
   } */
-  .ds-text-tertiary {
-    @apply ds-text text-tertiary;
+  .g-text-tertiary {
+    @apply g-text text-tertiary;
+  }
+  .g-text-danger {
+    @apply g-text text-danger;
   }
 }

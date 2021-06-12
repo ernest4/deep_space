@@ -7,7 +7,6 @@ class HomeComponent < ApplicationComponent
 
   def call
     capture do
-      c div(:class => "pt-2 bg-blue-500")
       c div(:class => "pt-4")
       c jumbotron
       c div(:class => "pt-4")
@@ -23,26 +22,26 @@ class HomeComponent < ApplicationComponent
     UI::CardComponent.new(
       :header => "About",
       :body => div do
-        c span("#{Constants::GAME_NAME} (#{Constants::GAME_NAME_ACRONYM})", :class => "ds-text-primary")
+        c span("#{Constants::GAME_NAME} (#{Constants::GAME_NAME_ACRONYM})", :class => "g-text-primary")
         c " is a text based MMORPG set in Milky Way Galaxy. You are the "
-        c span("commander", :class => "ds-text-secondary")
+        c span("commander", :class => "g-text-secondary")
         c " of your fleet of "
-        c span("ships", :class => "ds-text-tertiary")
+        c span("ships", :class => "g-text-tertiary")
         c " and colonizer of "
-        c span("planets", :class => "ds-text-tertiary")
+        c span("planets", :class => "g-text-tertiary")
         c "."
         c br
         c br
         c "Build yourself and your galactic empire your way with other "
-        c span("players", :class => "ds-text-secondary")
+        c span("players", :class => "g-text-secondary")
         c " around the world. Form "
-        c span("alliances", :class => "ds-text-tertiary")
+        c span("alliances", :class => "g-text-tertiary")
         c ", "
-        c span("trade", :class => "ds-text-tertiary")
+        c span("trade", :class => "g-text-tertiary")
         c ", "
-        c span("fight", :class => "ds-text-tertiary")
+        c span("fight", :class => "g-text-tertiary")
         c " and "
-        c span("discover", :class => "ds-text-tertiary")
+        c span("discover", :class => "g-text-tertiary")
         c " the mysteries of deep dark space."
         c br
         c br
@@ -61,7 +60,7 @@ class HomeComponent < ApplicationComponent
           type, count = user_count
 
           c span {
-            c span(type.to_s.split("_").join(" "), :class => "ds-text-secondary")
+            c span(type.to_s.split("_").join(" "), :class => "g-text-secondary")
             c " : "
             c span(count, :class => "sv-text font-bold")
           }
@@ -88,7 +87,7 @@ class HomeComponent < ApplicationComponent
           players share the same game, no artificial segregation of populations." },
           { :title => "Influence Development", :description => div do
             c "Join "
-            c link_to(nil, "Discord", :href => "https://discord.gg/4QXZw5Xvz5", :class => "ds-link-tertiary text-sm", :target => "_blank", :rel => "noopener")
+            c link_to(nil, "Discord", :href => "https://discord.gg/4QXZw5Xvz5", :class => "g-link-tertiary text-sm", :target => "_blank", :rel => "noopener")
             c " chat to track development, report bugs and make feature requests."
           end },
           { :title => "Commander", :description => "You are the commander. Level up and command
@@ -160,14 +159,14 @@ class HomeComponent < ApplicationComponent
         feature_lists.each do |feature_list_name, feature_list|
           c span(feature_list_name.capitalize, :class => "sv-text font-bold")
           if feature_list[:subtitle].present?
-            c div(feature_list[:subtitle], :class => "ds-text italic text-gray-400 text-sm")
+            c div(feature_list[:subtitle], :class => "g-text italic text-gray-400 text-sm")
           end
 
           c div(:class => "pt-2")
           feature_list[:features].each do |feature|
             c div(:class => "pt-2")
-            c div(feature[:title], :class => "ds-text-secondary")
-            c div(feature[:description], :class => "ds-text text-sm")
+            c div(feature[:title], :class => "g-text-secondary")
+            c div(feature[:description], :class => "g-text text-sm")
           end
           c div(:class => "pt-8")
         end

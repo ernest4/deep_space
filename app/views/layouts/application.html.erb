@@ -16,9 +16,10 @@
   <!-- NOTE! any style added to body tag needs to be added to
        tailwind.js -> purge -> options -> safelist as there seems to be some weird bug where
        PurgeCSS ignores the classes in the body tag ... -->
-  <body class="ds-bg-deep-space-blue">
-    <div class="ds-global-container">
+  <body class="g-bg-deep-space-blue">
+    <div class="g-global-container">
     <!-- TODO: spacer for fixed navbar -->
+      <%= render FlashComponent.new %>
       <%= yield %>
     </div>
     <%= render NavbarComponent.new %>

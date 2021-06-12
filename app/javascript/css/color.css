@@ -1,29 +1,29 @@
 @layer components {
-  .ds-bg-deep-space-blue {
+  .g-bg-deep-space-blue {
     background: #01102e;
   }
-  /* .ds-color-primary {
+  /* .g-color-primary {
     color: var(--primary);
   }
-  .ds-bg-primary-gradient {
+  .g-bg-primary-gradient {
     background: var(--primary-gradient);
   }
-  .ds-bg-primary-gradient-hover:hover {
+  .g-bg-primary-gradient-hover:hover {
     background: var(--primary-gradient);
   }
-  .ds-bg-primary-light {
+  .g-bg-primary-light {
     background: hsl(18deg, 100%, 95%);
   }
-  .ds-color-secondary {
+  .g-color-secondary {
     color: var(--secondary);
   }
-  .ds-bg-secondary-gradient {
+  .g-bg-secondary-gradient {
     background: var(--secondary-gradient);
   }
-  .ds-bg-secondary-gradient-hover:hover {
+  .g-bg-secondary-gradient-hover:hover {
     background: var(--secondary-gradient);
   }
-  .ds-bg-secondary-light {
+  .g-bg-secondary-light {
     background: hsl(202deg, 44%, 95%);
   } */
 }

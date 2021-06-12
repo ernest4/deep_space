@@ -1,5 +1,7 @@
-# app/controllers/logins_controller.rb
+# TODO: specs !!!
+
 class LoginsController < ApplicationController
+  # TODO: do we need this???
   def new; end
 
   def create
@@ -7,7 +9,7 @@ class LoginsController < ApplicationController
       cookies.signed[:user_id] = user.id
       redirect_to user
     else
-      redirect_to new_session_url, :alert => 'authentication_failed'
+      redirect_to root_path, :flash => { :g => { :error => 'Authentication Failed', :success => 'testing success', :info => 'testing info' } }
     end
   end
 
@@ -25,7 +27,7 @@ class LoginsController < ApplicationController
       # hosted_domain: The user’s hosted G Suite domain, provided only if they belong to a G Suite.
       # given_name: The user's given name.
       # family_name: The user's last name.
-      email_address
+      # email_address
       User.find_by(:google_id => google_identity.user_id)
     elsif (error = flash[:google_sign_in][:error])
       logger.error "Google authentication error: #{error}"
