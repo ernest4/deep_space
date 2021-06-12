@@ -15,7 +15,7 @@ module.exports = {
     ],
     // These options are passed through directly to PurgeCSS
     options: {
-      safelist: ["ds-bg-deep-space-blue"],
+      safelist: ["ds-bg-deep-space-blue, w-56"],
       // blocklist: [/^debug-/],
       // keyframes: true,
       // fontFace: true,
