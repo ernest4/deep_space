@@ -5,14 +5,18 @@ class FlashComponent < ApplicationComponent
     flash[:g].present?
   end
 
+  # TODO: need a close button, probably stimulus.js powered.
+
   def call
     div do
-      flashes.each do |key, message|
-        c div(:class => "pt-4")
-        c UI::CardComponent.new({
-          :header => "#{key.capitalize}!",
-          :body => body(key, message)
-        }.merge(type(key)))
+      flashes.each do |key, messages|
+        messages.each do |message|
+          c div(:class => "pt-4")
+          c UI::CardComponent.new({
+            :header => "#{key.capitalize}!",
+            :body => body(key, message)
+          }.merge(type(key)))
+        end
       end
     end
   end

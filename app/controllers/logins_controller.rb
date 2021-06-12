@@ -9,7 +9,16 @@ class LoginsController < ApplicationController
       cookies.signed[:user_id] = user.id
       redirect_to user
     else
-      redirect_to root_path, :flash => { :g => { :error => 'Authentication Failed', :success => 'testing success', :info => 'testing info' } }
+      # redirect_to root_path, :flash => { :g => { :error => 'Authentication Failed', :success => 'testing success', :info => 'testing info' } }
+
+      flash_hash = add_flash_error({}, "Auth failed")
+      flash_hash = add_flash_error(flash_hash, "Auth failed 2")
+      flash_hash = add_flash_success(flash_hash, "works 1")
+      flash_hash = add_flash_info(flash_hash, "info 1")
+      flash_hash = add_flash_info(flash_hash, "info 2")
+      flash_hash = add_flash_info(flash_hash, "info 3")
+
+      redirect_to root_path, :flash => flash_hash
     end
   end
 

@@ -11,7 +11,7 @@ class HomeController < ApplicationController
     user_counts = {
       :now => User.online.count,
       :last_24h => User.last_online(1.day.ago).count,
-      :all_time => User.count
+      :all_time => User.count # TODO: if player record deleted, count goes down. Keep player records as disabled? Or create another place to store this count?
     }
 
     render HomeComponent.new(:user_counts => user_counts)

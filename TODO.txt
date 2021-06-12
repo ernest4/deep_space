@@ -10,3 +10,4 @@ TODO:
 [5] google login
 [6] customizable in game avatars
 [7] ...
+[8] Simplecov coverage. Run it!!
