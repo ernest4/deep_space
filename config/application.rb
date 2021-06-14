@@ -20,6 +20,9 @@ module DeepSpace
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
+    config.eager_load_paths << Rails.root.join("app", "actions")
+    config.eager_load_paths << Rails.root.join("app", "modules")
+
     config.view_component.preview_paths << "#{Rails.root}/spec/components/previews"
   end
 end

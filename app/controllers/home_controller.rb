@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   # before_action :set_user, :only => %i[show edit update destroy]
+  # before_action :allow_unauthenticated
+  before_action :authenticate, :except => [:show]
 
   # # GET /users or /users.json
   # def index
@@ -62,8 +64,6 @@ class HomeController < ApplicationController
   #     format.json { head :no_content }
   #   end
   # end
-
-  private
 
   # # Use callbacks to share common setup or constraints between actions.
   # def set_user

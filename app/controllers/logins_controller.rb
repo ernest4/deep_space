@@ -1,35 +1,45 @@
 # TODO: specs !!!
 
 class LoginsController < ApplicationController
+  before_action :authenticate, :except => [:create]
+
   def create
     user = user_find_or_create_by_google_id
     user.track_online_status!
-    cookies.signed[:user_id] = user.id
+    cookies.encrypted[:user_id] = user.id
     redirect_to appropriate_path_for_user(user)
   rescue StandardError, GoogleSignInError => e
-    error_message = "Authentication error: #{e}"
-    log_error(error_message, :user => user)
-    flash_hash = add_flash_error({}, error_message)
+    error_message = "Authentication error"
+    log_error(error_message, e, :user => user)
+    flash_hash = add_flash_error({}, with_support(error_message))
+    redirect_to root_path, :flash => flash_hash
+  end
+
+  def destroy
+    user.track_offline_status!
+    reset_session
+    cookies.clear
+
+    flash_hash = add_flash_success({}, "Logged out.")
+    redirect_to root_path, :flash => flash_hash
+  rescue StandardError => e
+    error_message = "Logout error"
+    log_error(error_message, e, :user => user)
+    flash_hash = add_flash_error({}, with_support(error_message))
     redirect_to root_path, :flash => flash_hash
   end
 
   private
 
-  # TODO: extract to controller concern
-  def log_error(error, **args)
-    logger.error "Google authentication error: #{error}", args
-    # TODO: rollbar here as well...
-  end
-
   def user_find_or_create_by_google_id
-    id_token = flash[:google_sign_in][:id_token]
-    raise GoogleSignInError, flash[:google_sign_in][:error] if id_token.blank?
+    id_token = flash[:google_sign_in]["id_token"]
+    raise GoogleSignInError, flash[:google_sign_in]["error"] if id_token.blank?
 
     google_identity = GoogleSignIn::Identity.new(id_token)
     google_id = google_identity.user_id
     email_address = google_identity.email_address
 
-    user = User.find_by!(:google_id => google_id)
+    user = User.find_by(:google_id => google_id)
     user.presence || User.create!(:google_id => google_id, :email => email_address)
   end
 
@@ -37,7 +47,6 @@ class LoginsController < ApplicationController
     new_user?(user) ? welcome_path : galaxy_path
   end
 
-  
   # # def initialize_user(google_identity)
   # #   # name
   # #   # email_address

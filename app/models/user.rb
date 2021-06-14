@@ -7,6 +7,9 @@ class User < ApplicationRecord
   validates :google_id, :presence => true
   validates :email, :presence => true
 
+  # do we need this?
+  # after_commit :deliver_welcome_email, :on => [:create]
+
   # TODO: specs
   scope :online, -> { where(:online => true) }
 
@@ -18,6 +21,10 @@ class User < ApplicationRecord
   # TODO: specs
   def track_online_status!
     update!(:last_online => Time.current, :online => true)
+  end
+
+  def track_offline_status!
+    update!(:last_online => Time.current, :online => false)
   end
 end
 

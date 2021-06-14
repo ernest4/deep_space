@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root 'home#show'
 
-  get 'login', :to => 'logins#new' # TODO: do we need this???
   get 'login/create', :to => 'logins#create', :as => :create_login
+  get 'login/destroy', :to => 'logins#destroy', :as => :destroy_login
 
   get 'welcome', :to => 'welcome#index'
 
