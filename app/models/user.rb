@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_one :character
   # has_one :tutorial # ?? yeah ? or store it on user ? maybe can be a concern, different models can have different tutorials ?
 
+  # TODO: specs
   validates :google_id, :presence => true
   validates :email, :presence => true
 
@@ -13,6 +14,11 @@ class User < ApplicationRecord
   scope :last_online, lambda { |since|
     where("last_online > ?", since)
   }
+
+  # TODO: specs
+  def track_online_status!
+    update!(:last_online => Time.current, :online => true)
+  end
 end
 
 # Some sample code from elsewhere
