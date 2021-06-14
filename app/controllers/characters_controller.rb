@@ -39,7 +39,10 @@ class CharactersController < ApplicationController
 
     flash_hash = {}
     e.record.errors.each do |error|
-      flash_hash = add_flash_error(flash_hash, error)
+      # debugger
+      # attribute_error = { :attribute => error.attribute, :type => error.type, :options => error.options}
+      # flash_hash = add_flash_error(flash_hash, attribute_error)
+      flash_hash = add_flash_form_error(:character, flash_hash, error)
     end
     # redirect_to root_path, :flash => flash_hash
     redirect_back :fallback_location => root_path, :flash => flash_hash

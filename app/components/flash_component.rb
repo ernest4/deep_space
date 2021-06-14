@@ -23,10 +23,6 @@ class FlashComponent < ApplicationComponent
 
   private
 
-  def flashes
-    flash[:g]
-  end
-
   def body(key, message)
     div(:class => body_class(key)) do
       c message

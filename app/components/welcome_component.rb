@@ -30,8 +30,18 @@ class WelcomeComponent < ApplicationComponent
       c span("Ad Astra, our journey begins...")
       c form_with(:model => Character.new, :local => true) { |form|
         c form.text_field(:name)
-        c form.submit "Begin", :disable_with => "...checking..."
+        c form.submit "Begin", :data => { :disable_with => "...checking..." }
+        c div(:class => "pt-4")
+        c format_error(:character, :name) # TODO: extract to concern
       }
     end
+  end
+
+  def format_error(form_name, attribute)
+    attribute_error = flash_form_error(form_name, attribute)
+    return if attribute_error.blank?
+
+    error_message = span("#{form_name} #{attribute} #{attribute_error[:error].split("_").join(" ")} : #{attribute_error[:count]}", :class => "text-danger")
+    UI::CardComponent.new(:body => error_message, :danger => true)
   end
 end
