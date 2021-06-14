@@ -7,7 +7,6 @@ class HomeComponent < ApplicationComponent
 
   def call
     capture do
-      c div(:class => "pt-4")
       c jumbotron
       c div(:class => "pt-4")
       c player_counts(@user_counts)

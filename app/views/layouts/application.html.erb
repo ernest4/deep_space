@@ -20,6 +20,7 @@
     <div class="g-global-container">
     <!-- TODO: spacer for fixed navbar -->
       <%= render FlashComponent.new %>
+      <div class="pt-4"></div> <!-- Constant spacing above main content -->
       <%= yield %>
     </div>
     <%= render NavbarComponent.new %>
