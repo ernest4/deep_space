@@ -10,6 +10,8 @@ class HomeController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    return redirect_to welcome_path if logged_in?
+
     user_counts = {
       :now => User.online.count,
       :last_24h => User.last_online(1.day.ago).count,

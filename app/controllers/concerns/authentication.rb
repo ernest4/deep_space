@@ -25,4 +25,8 @@ module Authentication
   def allow_unauthenticated?
     @allow_unauthenticated
   end
+
+  def logged_in?
+    cookies.encrypted[:user_id].present?
+  end
 end

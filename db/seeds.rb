@@ -9,15 +9,14 @@
 # TODO: seed with game specific initial data.
 # TODO: build admin front end to edit / add more stuff to DB to facilitate content generation.
 
-# this will delete all positionables and their positions
-Position.all.each { |position| position.positionable.destroy! }
-
 PLANET = "Planet".freeze
 STAR = "Star".freeze
 STATION = "Station".freeze
 ASTEROID = "Asteroid".freeze
 
 LOCATIONS = [PLANET, STAR, STATION, ASTEROID].freeze
+
+LOCATIONS.each { |location| location.constantize.destroy_all }
 
 positions = 100.times.map do |i|
   {
