@@ -33,6 +33,7 @@ class CharactersController < ApplicationController
     #     format.json { render :json => @user.errors, :status => :unprocessable_entity }
     #   end
     # end
+    redirect_to galaxy_path
   rescue ActiveRecord::RecordInvalid => e
     error_message = "Record Invalid"
     log_error(error_message, e, :user => Current.user)

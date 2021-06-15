@@ -1,13 +1,11 @@
-class WelcomeController < ApplicationController
+class GalaxyController < ApplicationController
   # before_action :set_user, :only => %i[show edit update destroy]
 
   # # GET /users or /users.json
   def index
     # @users = User.all
 
-    return render WelcomeComponent.new if new_user?
-
-    redirect_to galaxy_path
+    render GalaxyComponent.new
   end
 
   # GET /users/1 or /users/1.json
@@ -22,10 +20,6 @@ class WelcomeController < ApplicationController
   # end
 
   private
-
-  def new_user?
-    Current.user.character.blank?
-  end
 
   # # Use callbacks to share common setup or constraints between actions.
   # def set_user
