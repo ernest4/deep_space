@@ -25,12 +25,16 @@ class WelcomeComponent < ApplicationComponent
         c "Among the strongest sources of the dark energy signal was the black hole from our own galaxy. We thus set our sights there as the final destination. We hope to perhaps get some answers on who built these artifacts, why and where they are now?"
         c div(:class => "pt-4")
         c "Early enough in the journey you discover that we're not alone after all, there are other alien races! They have developed warp drives, just as we have, from the other artefacts we saw signals from earlier. Some, more friendlier than others, but all with a similar goal of seeking answers at the centre of our galaxy. Collectively, the alien races developed space station hubs as key neutral meeting points for trade and truce agreements, safe havens for travelers. You find yourself at one of these hubs now."
+        c div(:class => "pt-4")
+        c span("Ad Astra, our journey begins...")
       }
       c div(:class => "pt-4")
-      c span("Ad Astra, our journey begins...")
       c form_with(:model => Character.new, :local => true) { |form|
-        c form.text_field(:name)
-        c form.submit "Begin", :data => { :disable_with => "...checking..." }
+        c div(:class => "md:flex") {
+          c form.text_field(:name, :placeholder => "what should they call you?", :class => "g-input w-72")
+          c div(:class => "pt-4 md:pt-0 md:pl-4")
+          c form.submit("Begin", :data => { :disable_with => "...checking..." }, :class => "g-button-primary")
+        }
         c div(:class => "pt-4")
         c format_error(:character, :name) # TODO: extract to concern
       }
@@ -41,7 +45,7 @@ class WelcomeComponent < ApplicationComponent
     attribute_error = flash_form_error(form_name, attribute)
     return if attribute_error.blank?
 
-    error_message = span("#{form_name} #{attribute} #{attribute_error[:error].split("_").join(" ")} : #{attribute_error[:count]}", :class => "text-danger")
+    error_message = span("#{form_name} #{attribute} #{attribute_error[:error].split('_').join(' ')} : #{attribute_error[:count]}", :class => "text-danger")
     UI::CardComponent.new(:body => error_message, :danger => true)
   end
 end

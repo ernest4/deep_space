@@ -7,10 +7,10 @@
 
 @import "./text.css";
 @import "./link.css";
-/* @import "./button.css"; */
 @import "./container.css";
 /* @import "./card.css"; */
-/* @import "./input.css"; */
+@import "./input.css";
+@import "./button.css";
 /* @import "./zindex.css"; */
 /* @import "./pill.css"; */
 

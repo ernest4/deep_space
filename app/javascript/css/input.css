@@ -1,0 +1,20 @@
+@layer components {
+  .g-input {
+    @apply g-container bg-black hover:border-primary;
+  }
+  /* .g-input-select {
+    @apply g-input py-0;
+  } */
+  /* .g-input-area {
+    @apply g-input pt-3 h-auto;
+    min-height: 3rem;
+  } */
+  /* .g-input-select:hover, */
+  /* .g-input:hover,
+  .g-input-area:hover {
+    @apply g-container bg-black border-primary;
+  } */
+  /* .g-input-error {
+    @apply border-red-500 !important;
+  } */
+}

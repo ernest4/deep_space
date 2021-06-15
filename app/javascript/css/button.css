@@ -1,0 +1,36 @@
+@layer components {
+  .g-button {
+    @apply g-container py-2 px-6 cursor-pointer;
+  }
+  .g-button-primary {
+    @apply g-button border-primary hover:bg-primary;
+  }
+  /* .g-button-primary-alt {
+    @apply g-button g-bg-secondary-gradient;
+    border-color: var(--secondary);
+  } */
+  /* .g-button-primary-alt:hover {
+    @apply g-button bg-blue-700;
+  } */
+  /* .g-button-secondary {
+    @apply g-button g-text-secondary;
+    border-color: var(--secondary);
+  }
+  .g-button-tertiary {
+    @apply g-button g-text-secondary p-0;
+    border-color: white;
+  }
+  .g-button-tertiary-alt {
+    @apply g-button g-text-primary p-0;
+    border-color: white;
+  }
+  .g-button-disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }*/
+  .g-button-small {
+    @apply py-1 px-3;
+  }
+  .g-button-large {
+    @apply py-4 px-12;
+  }
+}
