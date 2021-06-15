@@ -1,8 +1,8 @@
 class GalaxyComponent < ApplicationComponent
   def call
     capture do
-      c "galaxy map wip"
       c "new user tutorial? wip"
+      c Galaxy::MapComponent.new(:center => Current.character.position.to_coords)
     end
   end
 end
