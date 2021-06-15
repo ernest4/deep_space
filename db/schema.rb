@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_15_082118) do
+ActiveRecord::Schema.define(version: 2021_06_15_194351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "asteroids", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_asteroids_on_name", unique: true
+  end
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
@@ -22,6 +29,37 @@ ActiveRecord::Schema.define(version: 2021_06_15_082118) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_characters_on_name", unique: true
     t.index ["user_id"], name: "index_characters_on_user_id"
+  end
+
+  create_table "planets", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_planets_on_name", unique: true
+  end
+
+  create_table "positions", force: :cascade do |t|
+    t.bigint "x"
+    t.bigint "y"
+    t.bigint "positionable_id"
+    t.string "positionable_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["positionable_type", "positionable_id"], name: "index_positions_on_positionable_type_and_positionable_id"
+  end
+
+  create_table "stars", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_stars_on_name", unique: true
+  end
+
+  create_table "stations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_stations_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
