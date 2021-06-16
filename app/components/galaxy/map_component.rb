@@ -33,23 +33,22 @@ module Galaxy
     end
 
     def draw_row(row)
-      # div(:class => "flex justify-between") do
+      div(:class => "flex justify-between") do
         row.each do |column|
           c draw_position(column)
         end
-      # end
+      end
     end
 
     def draw_position(position)
       # TODO: draw different graphics for different things
-      # div(:class => "border border-white h-16 w-16") do
+      div(:class => "border border-white h-16 w-16") do
         if position.present?
           c draw_graphic(position)
         else
-          # c div(:class => "w-16 h-16")
-          nil
+          c div(:class => "w-16 h-16")
         end
-      # end
+      end
     end
 
     # TODO: wip
@@ -69,31 +68,36 @@ module Galaxy
     end
 
     def draw_planet(position, x, y)
-      div(:class => "absolute rounded-full bg-blue-500", :style => "top: calc(4rem * #{y}); left: calc(4rem * #{x}); width: 2px; height: 2px; transform: scale(20)") do
+      # div(:class => "absolute rounded-full bg-blue-500", :style => "top: calc(4rem * #{y}); left: calc(4rem * #{x}); width: 2px; height: 2px; transform: scale(20)") do
+      div(:class => "absolute rounded-full bg-blue-500", :style => "width: 2px; height: 2px; transform: scale(20)") do
         # c "#{position.positionable.name.first}_#{position.positionable.name.split('_').last}"
       end
     end
 
     def draw_star(position, x, y)
-      div(:class => "absolute rounded-full bg-yellow-500", :style => "top: calc(4rem * #{y}); left: calc(4rem * #{x}); width: 2px; height: 2px; transform: scale(30)") do
+      # div(:class => "absolute rounded-full bg-yellow-500", :style => "top: calc(4rem * #{y}); left: calc(4rem * #{x}); width: 2px; height: 2px; transform: scale(30)") do
+      div(:class => "absolute rounded-full bg-yellow-500", :style => "width: 2px; height: 2px; transform: scale(30)") do
         # c "#{position.positionable.name.first}_#{position.positionable.name.split('_').last}"
       end
     end
 
     def draw_station(position, x, y)
-      div(:class => "absolute rounded-full bg-white", :style => "top: calc(4rem * #{y}); left: calc(4rem * #{x}); width: 2px; height: 2px; transform: scale(10)") do
+      # div(:class => "absolute rounded-full bg-white", :style => "top: calc(4rem * #{y}); left: calc(4rem * #{x}); width: 2px; height: 2px; transform: scale(10)") do
+      div(:class => "absolute rounded-full bg-white", :style => "width: 2px; height: 2px; transform: scale(10)") do
         # c "#{position.positionable.name.first}_#{position.positionable.name.split('_').last}"
       end
     end
 
     def draw_asteroid(position, x, y)
-      div(:class => "absolute rounded-full bg-gray-500", :style => "top: calc(4rem * #{y}); left: calc(4rem * #{x}); width: 2px; height: 2px; transform: scale(12)") do
+      # div(:class => "absolute rounded-full bg-gray-500", :style => "top: calc(4rem * #{y}); left: calc(4rem * #{x}); width: 2px; height: 2px; transform: scale(12)") do
+      div(:class => "absolute rounded-full bg-gray-500", :style => "width: 2px; height: 2px; transform: scale(12)") do
         # c "#{position.positionable.name.first}_#{position.positionable.name.split('_').last}"
       end
     end
 
     def draw_character(_position, x, y)
-      div(:class => "absolute rounded-full bg-red-500", :style => "top: calc(4rem * #{y}); left: calc(4rem * #{x}); width: 2px; height: 2px; transform: scale(9)")
+      # div(:class => "absolute rounded-full bg-red-500", :style => "top: calc(4rem * #{y}); left: calc(4rem * #{x}); width: 2px; height: 2px; transform: scale(9)")
+      div(:class => "absolute rounded-full bg-red-500", :style => "width: 2px; height: 2px; transform: scale(9)")
     end
   end
 end
