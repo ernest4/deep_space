@@ -6,11 +6,11 @@ class Character < ApplicationRecord
   # TODO: SPECS
   validates :name, :length => { :in => 2..12 }
 
-  # after_commit :assign_position, :on => [:create]
+  # after_commit :assign_station_position, :on => [:create]
   # TODO: SPECS
-  after_create :assign_position
+  after_create :assign_station_position
 
-  def assign_position
+  def assign_station_position
     random_station_id = Station.pluck(:id).sample # TODO: make sure this is far from galaxe center !!
     station_position = Station.find(random_station_id).position
     Position.create!(:positionable => self, :x => station_position.x, :y => station_position.y)

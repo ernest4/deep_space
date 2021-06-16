@@ -18,10 +18,11 @@ LOCATIONS = [PLANET, STAR, STATION, ASTEROID].freeze
 
 LOCATIONS.each { |location| location.constantize.destroy_all }
 
-positions = 100.times.map do |i|
+positions_count = 100
+positions = positions_count.times.to_a.shuffle.map do |i|
   {
-    :x => i,
-    :y => i,
+    :x => rand(positions_count),
+    :y => rand(positions_count),
     :type => LOCATIONS[i % 4],
     :type_info => {
       :name => "#{LOCATIONS[i % 4]}_#{i}"
