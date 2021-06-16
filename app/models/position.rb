@@ -1,6 +1,8 @@
+# TODO: specs
 class Position < ApplicationRecord
   belongs_to :positionable, :polymorphic => true
 
+  # TODO: specs
   scope :around, lambda { |center:, range:|
                    min_x = center[:x] - range
                    max_x = center[:x] + range
