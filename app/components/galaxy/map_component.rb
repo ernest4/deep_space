@@ -2,22 +2,50 @@ module Galaxy
   class MapComponent < ApplicationComponent
     def initialize(center:)
       @center = center
-      @range = 10 # TODO: allow "zoom" change on front end will set this value basically, the more you zoom out the bigger the range you can see
+      @range = 5 # TODO: allow "zoom" change on front end will set this value basically, the more you zoom out the bigger the range you can see
       # positions = Position.around(:center => @center, :range => @range).order(:x => :asc).includes(:positionable) # NOTE: very important for X to be ascending for grid calculation
       positions = Position.around(:center => @center, :range => @range).order(:x => :asc) # NOTE: very important for X to be ascending for grid calculation
       @positions_in_grid = generate_grid_from_positions(positions, @center, @range)
     end
 
     def call
-      # TODO: drawing the grid map...
-      div(:class => "border border-red-500") do
+      # div(:class => "border border-red-500 relative") do
+      div(:class => "relative") do
+        c draw_grid
+        c draw_grid_navigation
+      end
+    end
+
+    private
+
+    def draw_grid
+      capture do
         @positions_in_grid.each do |row|
           c draw_row(row)
         end
       end
     end
 
-    private
+    def draw_grid_navigation
+      div(:class => "absolute top-0 left-0 w-full h-full flex flex-col justify-between items-center") do
+        c div(:class => "cursor-pointer w-max") {
+          c div(:class => "pt-6")
+          c div("Up", :class => "g-button-secondary")
+        }
+        c div(:class => "flex justify-between w-full") {
+          c div(:class => "cursor-pointer", :style => "transform: rotate(270deg);") {
+            c div("Left", :class => "g-button-secondary")
+          }
+          c div(:class => "cursor-pointer", :style => "transform: rotate(90deg);") {
+            c div("Right", :class => "g-button-secondary")
+          }
+        }
+        c div(:class => "cursor-pointer w-max") {
+          c div("Down", :class => "g-button-secondary")
+          c div(:class => "pt-6")
+        }
+      end
+    end
 
     def generate_grid_from_positions(positions, center, range)
       grid_with = range * 2
@@ -30,7 +58,6 @@ module Galaxy
         grid[grid_y][grid_x] = position
       end
 
-      pp grid
       grid
     end
 
@@ -43,17 +70,18 @@ module Galaxy
     end
 
     def draw_position(position)
-      # TODO: draw different graphics for different things
-      div(:class => "border border-white h-16 w-16") do
+      # div(:class => "border border-white h-16 w-16") do
+      div(:class => "h-16 w-16") do
         if position.present?
           c draw_graphic(position)
         else
-          c div(:class => "w-16 h-16")
+          # c div(:class => "w-16 h-16")
+          # nil
         end
       end
     end
 
-    # TODO: wip
+    # TODO: wip extract out?
     def draw_graphic(position)
       y = (position.y - @center[:y]) + @range
       x = (position.x - @center[:x]) + @range

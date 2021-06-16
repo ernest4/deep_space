@@ -12,10 +12,10 @@
   /* .g-button-primary-alt:hover {
     @apply g-button bg-blue-700;
   } */
-  /* .g-button-secondary {
-    @apply g-button g-text-secondary;
-    border-color: var(--secondary);
+  .g-button-secondary {
+    @apply g-button border-secondary hover:bg-secondary;
   }
+  /*
   .g-button-tertiary {
     @apply g-button g-text-secondary p-0;
     border-color: white;
