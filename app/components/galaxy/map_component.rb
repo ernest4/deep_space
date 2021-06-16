@@ -3,7 +3,8 @@ module Galaxy
     def initialize(center:)
       @center = center
       @range = 10 # TODO: allow "zoom" change on front end will set this value basically, the more you zoom out the bigger the range you can see
-      positions = Position.around(:center => @center, :range => @range).order(:x => :asc).includes(:positionable) # NOTE: very important for X to be ascending for grid calculation
+      # positions = Position.around(:center => @center, :range => @range).order(:x => :asc).includes(:positionable) # NOTE: very important for X to be ascending for grid calculation
+      positions = Position.around(:center => @center, :range => @range).order(:x => :asc) # NOTE: very important for X to be ascending for grid calculation
       @positions_in_grid = generate_grid_from_positions(positions, @center, @range)
     end
 
@@ -29,6 +30,7 @@ module Galaxy
         grid[grid_y][grid_x] = position
       end
 
+      pp grid
       grid
     end
 
@@ -56,13 +58,13 @@ module Galaxy
       y = (position.y - @center[:y]) + @range
       x = (position.x - @center[:x]) + @range
 
-      return draw_planet(position, x, y) if position.positionable.class.to_s == "Planet"
-      return draw_star(position, x, y) if position.positionable.class.to_s == "Star"
-      return draw_station(position, x, y) if position.positionable.class.to_s == "Station"
-      return draw_asteroid(position, x, y) if position.positionable.class.to_s == "Asteroid"
+      return draw_planet(position, x, y) if position.positionable_type == "Planet"
+      return draw_star(position, x, y) if position.positionable_type == "Star"
+      return draw_station(position, x, y) if position.positionable_type == "Station"
+      return draw_asteroid(position, x, y) if position.positionable_type == "Asteroid"
 
       # NOTE: for debugging only !!
-      return draw_character(position, x, y) if position.positionable.class.to_s == "Character"
+      return draw_character(position, x, y) if position.positionable_type == "Character"
 
       nil
     end
