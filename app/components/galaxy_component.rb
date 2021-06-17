@@ -8,7 +8,8 @@ class GalaxyComponent < ApplicationComponent
         c div("Group Battle", :class => "g-button-secondary g-button-large")
       }
       c div(:class => "pt-4")
-      c UI::CardComponent.new(:body => locations)
+      # c UI::CardComponent.new(:body => locations)
+      c locations
     end
   end
 
@@ -17,8 +18,16 @@ class GalaxyComponent < ApplicationComponent
       Current.character.occupations.each do |occupation|
         c UI::CardComponent.new(
           :header => occupation.occupiable.name,
-          :body => div(:class => "rounded-full bg-white w-16 h-16"),
-          :footer => "#{occupation.occupiable_type} | #{occupation.occupiable.position.to_coords}"
+          :body => div do
+            c div(:class => "pt-4")
+            c div(:class => "md:flex") {
+              c div(:class => "rounded-full bg-white w-48 h-48")
+              c div(:class => "pt-4 md:pt-0")
+              c span("The starting location and safe haven for all new explorers.")
+            }
+            c div(:class => "pt-4")
+          end,
+          :footer => "#{occupation.occupiable_type} #{occupation.occupiable.position.to_coords.values}"
         )
       end
     end
