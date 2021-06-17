@@ -76,6 +76,7 @@ class HomeComponent < ApplicationComponent
     )
   end
 
+  # TODO: go over this list, make sure it's in line with reality
   def features
     feature_lists = {
       :available => {
@@ -91,19 +92,15 @@ class HomeComponent < ApplicationComponent
           end },
           { :title => "Commander", :description => "You are the commander. Level up and command
            bigger more powerful fleets." },
-          { :title => "Galaxy Map", :description => "Explore the shared galaxy with interstellar travel." },
-          { :title => "Combat", :description => "Engage your fleets against those of other players
-          to win control of stars and planets." },
+          { :title => "Galaxy", :description => "Explore the shared galaxy with interstellar travel." },
+          { :title => "Combat", :description => "Engage your fleets against those of other players." },
           { :title => "Conquest", :description => "Gain control of locations like planets, stars,
-           asteroids etc. to expand your galactic empire. Each player owns a controlling share of
-           any given location. Fight more to control more." },
+           asteroids etc. to expand your galactic empire." },
           { :title => "Construction", :description => "Build resource extractors and infrastructure
           to get more resources. Use resources to supply and enlarge your fleets." },
-          { :title => "Trade Routes", :description => "Set up trade routes to move goods around your
-          empire." },
+          { :title => "Trade Routes", :description => "Set up trade routes to move goods around your empire." },
           { :title => "Rogue-lite", :description => "Fleet combat is turn based, destroyed ships are
-          permanently lost, decisions carry consequences, all resources in possession are finite and
-          continuously consumed, location control can be gained and lost etc." },
+          permanently lost, decisions carry consequences." },
           { :title => "Menacing Machines", :description => "Fight against the rogue AI robots out to
            destroy all organics for reasons not yet known." }
         ]
@@ -142,9 +139,9 @@ class HomeComponent < ApplicationComponent
           they still like to hide their treasure in random places to be forgotten and rediscovered." },
           { :title => "Prestige", :description => "Prestige starts a new play-through after reaching
            the centre of Galaxy. Earn rewards that persist through Prestiges." },
-          { :title => "Space Racers", :description => "Develop a Space Racing. Recruit and train
+          { :title => "Space Racers", :description => "Develop a Space Racing Team. Recruit and train
            your racers and supporting team. Enter into competitions for prizes in racing
-           tournaments. Spectate and bet on races." },
+           tournaments. Bet on races." },
           { :title => "Milky Millions", :description => "Play in-game lottery. A winner is
           guaranteed every month." },
           { :title => "The Void", :description => "Catch up on Galaxy wide news, on the in game

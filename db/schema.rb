@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_15_194351) do
+ActiveRecord::Schema.define(version: 2021_06_17_123428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 2021_06_15_194351) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_characters_on_name", unique: true
     t.index ["user_id"], name: "index_characters_on_user_id"
+  end
+
+  create_table "occupations", force: :cascade do |t|
+    t.bigint "character_id"
+    t.bigint "occupiable_id"
+    t.string "occupiable_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["occupiable_type", "occupiable_id"], name: "index_occupations_on_occupiable_type_and_occupiable_id"
   end
 
   create_table "planets", force: :cascade do |t|
