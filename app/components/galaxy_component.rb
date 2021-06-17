@@ -1,14 +1,15 @@
 class GalaxyComponent < ApplicationComponent
   def call
+    footer_nav
     capture do
       # c "new user tutorial? wip"
-      c div(:class => "flex justify-between") {
-        c div("Quick Battle", :class => "g-button-primary g-button-large")
-        # TODO: hover for "coming soon"
-        c div("Group Battle", :class => "g-button-secondary g-button-large")
-      }
       c div(:class => "pt-4")
       # c UI::CardComponent.new(:body => locations)
+      c locations
+
+      # TESTING
+      c locations
+      c locations
       c locations
     end
   end
@@ -30,6 +31,20 @@ class GalaxyComponent < ApplicationComponent
           :footer => "#{occupation.occupiable_type} #{occupation.occupiable.position.to_coords.values}"
         )
       end
+    end
+  end
+
+  def footer_nav
+    content_for :footer do
+      c div(:class => "fixed w-full bottom-0") {
+        c div(:class => "flex justify-center items-end") {
+            c div("Quick Battle", :class => "g-button-primary g-button-large h-full")
+            c div(:class => "rounded-full bg-white w-48 h-48")
+            # TODO: hover for "coming soon"
+            c div("Group Battle", :class => "g-button-secondary g-button-large h-full")
+          }
+        c div(:class => "pt-4")
+      }
     end
   end
 end
