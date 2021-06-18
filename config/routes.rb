@@ -10,5 +10,12 @@ Rails.application.routes.draw do
 
   # resources :users
   resources :characters
+  # resources :matchmaking do
+  #   collection do
+  #     get 'cancel'
+  #   end
+  # end
+  post 'matchmaking/create', :to => 'matchmaking#create'
+  get 'matchmaking/cancel', :to => 'matchmaking#cancel'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
