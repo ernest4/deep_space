@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_17_123428) do
+ActiveRecord::Schema.define(version: 2021_06_18_222031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,12 +22,19 @@ ActiveRecord::Schema.define(version: 2021_06_17_123428) do
     t.index ["name"], name: "index_asteroids_on_name", unique: true
   end
 
+  create_table "battles", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
     t.index ["name"], name: "index_characters_on_name", unique: true
+    t.index ["status"], name: "index_characters_on_status"
     t.index ["user_id"], name: "index_characters_on_user_id"
   end
 
@@ -38,6 +45,15 @@ ActiveRecord::Schema.define(version: 2021_06_17_123428) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["occupiable_type", "occupiable_id"], name: "index_occupations_on_occupiable_type_and_occupiable_id"
+  end
+
+  create_table "participations", force: :cascade do |t|
+    t.bigint "character_id"
+    t.bigint "participatable_id"
+    t.string "participatable_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["participatable_type", "participatable_id"], name: "index_participations_on_participatable_type_and_its_id"
   end
 
   create_table "planets", force: :cascade do |t|
