@@ -6,11 +6,12 @@ module UI
       def initialize(button:, modal:)
         @button = button
         @modal = modal
+        @content_id = SecureRandom.uuid
       end
 
       def call
         capture do
-          c div(:data => { :controller => "modal" }) {
+          c div(:data => { :controller => "modal", "modal-content-id-value" => @content_id }) {
             c button
             c modal
           }
@@ -31,7 +32,7 @@ module UI
       end
 
       def modal
-        div(:class => "hidden", :data => { "modal-target" => "content" }, :id => SecureRandom.uuid) do
+        div(:class => "hidden", :data => { "modal-target" => "content" }, :id => @content_id) do
           c div(:class => "flex justify-between") {
             c span # for flex layout
             c close_button
@@ -41,7 +42,13 @@ module UI
       end
 
       def close_button
-        div("Close", :data => { :action => "click->modal#close" }, :class => "g-button-secondary g-small")
+        div("Close",
+            :data => { # super dirty looking method...but hey it works :)
+              :controller => "modal",
+              "modal-content-id-value" => @content_id,
+              :action => "click->modal#close"
+            },
+            :class => "g-button-secondary g-small")
       end
     end
   end
