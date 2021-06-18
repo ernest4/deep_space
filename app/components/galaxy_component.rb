@@ -8,9 +8,9 @@ class GalaxyComponent < ApplicationComponent
       c locations
 
       # TESTING
-      c locations
-      c locations
-      c locations
+      # c locations
+      # c locations
+      # c locations
     end
   end
 
@@ -38,8 +38,18 @@ class GalaxyComponent < ApplicationComponent
     content_for :footer do
       c div(:class => "fixed w-full bottom-0") {
         c div(:class => "flex justify-center items-end") {
-            c div("Quick Battle", :class => "g-button-primary g-button-large h-full")
-            c div(:class => "rounded-full bg-white w-48 h-48")
+            # c div("Quick Battle", :class => "g-button-primary g-button-large h-full")
+            c UI::Button::ModalComponent.new(
+              :button => div("Quick Battle", :class => "g-button-primary g-button-large h-full"),
+              :modal => UI::CardComponent.new(
+                :header => "Quick Battle [header test]",
+                :body => div do
+                  "testing quick battle modal body"
+                end,
+                :footer => "testing quick battle modal footer"
+              )
+            )
+            c div(:class => "rounded-full bg-white w-48 h-48 border-secondary border-8")
             # TODO: hover for "coming soon"
             c div("Group Battle", :class => "g-button-secondary g-button-large h-full")
           }
