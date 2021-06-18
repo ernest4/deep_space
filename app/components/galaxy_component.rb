@@ -41,66 +41,15 @@ class GalaxyComponent < ApplicationComponent
             c UI::Button::ModalComponent.new(
               :button => div("Quick Battle", :class => "g-button-primary g-button-large h-full"),
               :modal => UI::CardComponent.new(
-                :header => "Quick Battle [header test]",
+                :header => "Quick Battle",
                 :body => div do
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                  c "testing quick battle modal body"
-                end,
-                :footer => "testing quick battle modal footer"
+                  c pvp
+                  c div(:class => "pt-4")
+                  c pve
+                end
               )
             )
             c div(:class => "rounded-full bg-white w-48 h-48 border-secondary border-8")
-            # TODO: hover for "coming soon"
-            # c div("Group Battle", :class => "g-button-secondary g-button-large h-full")
             c UI::Button::ModalComponent.new(
               :button => div("Group Battle", :class => "g-button-secondary g-button-large h-full"),
               :modal => UI::CardComponent.new(
@@ -111,6 +60,26 @@ class GalaxyComponent < ApplicationComponent
           }
         c div(:class => "pt-4")
       }
+    end
+  end
+
+  def pvp
+    div(:class => "") do
+      c UI::Button::ModalComponent.new(
+        :button => div("Player vs Player", :class => "g-button-primary g-button-large h-full"),
+        :modal => "wip"
+      )
+      c span("Look for an opponent online!")
+    end
+  end
+
+  def pve
+    div(:class => "") do
+      c UI::Button::ModalComponent.new(
+        :button => div("Player vs Enemy", :class => "g-button-secondary g-button-large h-full"),
+        :modal => UI::CardComponent.new(:body => "Coming soon")
+      )
+      c span("Fight the Menacing Machines!")
     end
   end
 end
