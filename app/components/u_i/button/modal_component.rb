@@ -32,12 +32,23 @@ module UI
       end
 
       def modal
-        div(:class => "hidden", :data => { "modal-target" => "content" }, :id => @content_id) do
-          c div(:class => "flex justify-between") {
-            c span # for flex layout
-            c close_button
+        div(:class => "hidden fixed w-screen h-screen top-0 flex justify-center items-center bg-gray-900 bg-opacity-90", :data => { "modal-target" => "content" }, :id => @content_id) do
+          c div(:class => "overflow-scroll h-screen") {
+            c div(:class => "flex") {
+              c div(:class => "pl-4")
+              c div {
+                c div(:class => "pt-4")
+                c @modal
+                c div(:class => "pt-2")
+                c div(:class => "flex justify-between") {
+                  c close_button
+                  c span # for flex layout
+                }
+                c div(:class => "pt-4")
+              }
+              c div(:class => "pl-4")
+            }
           }
-          c @modal
         end
       end
 
