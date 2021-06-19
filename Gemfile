@@ -55,6 +55,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 5.0.0'
+  gem "rspec-sidekiq"
   gem 'rubocop', :require => false
   gem 'rubocop-faker'
   gem 'rubocop-rails'
