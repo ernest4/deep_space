@@ -1,6 +1,7 @@
 # TODO: SPECS
 class Character < ApplicationRecord
-  STATUSES = ["seeking_battle", "battling"].freeze
+  STATES = ["seeking_battle", "waiting_battle", "battling"].freeze
+  include Stateful
 
   belongs_to :user
   # has_one :position, :as => :positionable, :dependent => :destroy
@@ -17,10 +18,6 @@ class Character < ApplicationRecord
 
   # TODO: SPECS
   validates :name, :length => { :in => 2..12 }
-
-  STATUSES.each do |status|
-    scope status, -> { where(:status => status) }
-  end
 
   # after_commit :assign_station_position, :on => [:create]
   # TODO: SPECS
@@ -41,14 +38,5 @@ class Character < ApplicationRecord
     station = Station.beginner.first
     # Position.create!(:positionable => self, :x => station_position.x, :y => station_position.y)
     Occupation.create!(:character => self, :occupiable => station)
-  end
-
-  def method_missing(method, *arguments, &block)
-    method = method.to_s.chomp("?")
-    if STATUSES.include?(method)
-      status == method
-    else
-      super
-    end
   end
 end
