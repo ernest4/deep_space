@@ -17,6 +17,7 @@
        tailwind.js -> purge -> options -> safelist as there seems to be some weird bug where
        PurgeCSS ignores the classes in the body tag ... -->
   <body class="g-bg-deep-space-blue">
+    <div data-controller="action-cable-user-channel"></div>
     <div class="g-global-container">
     <!-- TODO: spacer for fixed navbar -->
       <%= render FlashComponent.new %>

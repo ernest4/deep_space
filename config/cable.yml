@@ -1,5 +1,9 @@
 development:
-  adapter: async
+  # adapter: async
+  # action cable is currenly buggy and does not play nice with default async adapter when broadcasting from jobs, user local redis...
+  adapter: redis
+  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+  channel_prefix: surfviva_full_stack_rails_development
 
 test:
   adapter: test

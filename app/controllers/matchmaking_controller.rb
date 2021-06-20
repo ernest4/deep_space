@@ -23,8 +23,9 @@ class MatchmakingController < ApplicationController
     # @user = User.new(user_params)
 
     # Character.create!(:name => character_params[:name], :user => Current.user)
-    Current.character.update!(:status => "seeking_battle")
-    MatchmakingWorker.perform_in(5.seconds, Current.character.id) # add a bit delay to let the user browser load in the ActionCable listener
+    Current.character.update!(:state => "seeking_battle")
+    # MatchmakingWorker.perform_in(5.seconds, Current.character.id) # add a bit delay to let the user browser load in the ActionCable listener
+    MatchmakingWorker.perform_async(Current.character.id)
 
     # respond_to do |format|
     #   if @user.save
@@ -65,7 +66,7 @@ class MatchmakingController < ApplicationController
   # end
 
   def cancel
-    Current.character.update!(:status => nil)
+    Current.character.update!(:state => nil) # TODO: handle case when character already in "battling" state ...
     redirect_back :fallback_location => galaxy_path
   rescue ActiveRecord::RecordInvalid => e
     error_message = "Record Invalid"
