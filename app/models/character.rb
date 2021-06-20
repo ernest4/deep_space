@@ -18,8 +18,6 @@ class Character < ApplicationRecord
 
   has_many :ships
 
-  scope :active_battle_set_ships, -> { ships.battle_set(active_battle_set) }
-
   # TODO: SPECS
   validates :name, :length => { :in => 2..12 }
 
@@ -33,15 +31,37 @@ class Character < ApplicationRecord
   #   Position.create!(:positionable => self, :x => station_position.x, :y => station_position.y)
   # end
 
+  # after_create :assign_default_station_occupation
   # TODO: assign beginner ships !!
-  after_create :assign_station_occupation
+  after_create :assign_defaults
 
-  def assign_station_occupation
+  def assign_defaults
+    ActiveRecord::Base.transaction do
+      assign_default_station_occupation
+      assign_default_ships
+    end
+  end
+
+  def assign_default_station_occupation
     # random_station_id = Station.pluck(:id).sample # TODO: make sure this is far from galaxe center !!
     # station_position = Station.find(random_station_id).position
 
     station = Station.beginner.first
     # Position.create!(:positionable => self, :x => station_position.x, :y => station_position.y)
     Occupation.create!(:character => self, :occupiable => station)
+  end
+
+  def assign_default_ships
+    small_ship1 = ShipGenerator.call(:category => "small")
+    small_ship2 = ShipGenerator.call(:category => "small")
+    medium_ship1 = ShipGenerator.call(:category => "medium")
+    medium_ship2 = ShipGenerator.call(:category => "medium")
+    large_ship = ShipGenerator.call(:category => "large")
+    ships = [small_ship1, small_ship2, medium_ship1, medium_ship2, large_ship]
+    update!(:ships => ships)
+  end
+
+  def active_battle_set_ships
+    ships.battle_set(active_battle_set)
   end
 end

@@ -5,8 +5,6 @@ class CreateShips < ActiveRecord::Migration[6.1]
       t.string :battle_set, :default => "default"
       t.string :state
       t.integer :hitpoints
-      t.string :category
-      t.string :name
       t.timestamps
     end
   end

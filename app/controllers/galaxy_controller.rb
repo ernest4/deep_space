@@ -1,4 +1,5 @@
 class GalaxyController < ApplicationController
+  before_action :redirect_to_active_battle, :only => [:index]
   # before_action :set_user, :only => %i[show edit update destroy]
 
   # # GET /users or /users.json
@@ -18,8 +19,6 @@ class GalaxyController < ApplicationController
 
   #   render HomeComponent.new(:user_counts => user_counts)
   # end
-
-  private
 
   # # Use callbacks to share common setup or constraints between actions.
   # def set_user
