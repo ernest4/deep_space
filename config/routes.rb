@@ -5,12 +5,11 @@ require 'sidekiq/web'
 # TOOD: constrain all admin routes like this !
 class AdminConstraint
   def self.admin?(request)
-    # return false unless request.session[:user_id]
-    # user = User.find(request.session[:user_id])
-
+    cookies = ActionDispatch::Cookies::CookieJar.build(request, request.cookies)
     return false unless cookies.encrypted[:user_id]
+
     user = User.find(cookies.encrypted[:user_id])
-    user && user.admin?
+    user&.admin?
   end
 end
 
