@@ -16,6 +16,10 @@ class Character < ApplicationRecord
   has_many :battles, :through => :participations, :source => :participatable, :source_type => 'Battle'
   # has_many :conversations, :through => :participations, :source => :participatable, :source_type => 'Conversation'
 
+  has_many :ships
+
+  scope :active_battle_set_ships, -> { ships.battle_set(active_battle_set) }
+
   # TODO: SPECS
   validates :name, :length => { :in => 2..12 }
 
@@ -29,6 +33,7 @@ class Character < ApplicationRecord
   #   Position.create!(:positionable => self, :x => station_position.x, :y => station_position.y)
   # end
 
+  # TODO: assign beginner ships !!
   after_create :assign_station_occupation
 
   def assign_station_occupation

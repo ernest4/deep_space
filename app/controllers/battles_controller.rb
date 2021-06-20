@@ -6,7 +6,7 @@ class BattlesController < ApplicationController
 
   # # GET /users/1 or /users/1.json
   def show
-    render BattleComponent.new
+    render BattleComponent.new(:battle_id => params[:id])
   end
 
   # # GET /users/new

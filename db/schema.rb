@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_20_162739) do
+ActiveRecord::Schema.define(version: 2021_06_20_182642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2021_06_20_162739) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "state"
+    t.string "active_battle_set", default: "default"
     t.index ["name"], name: "index_characters_on_name", unique: true
     t.index ["state"], name: "index_characters_on_state"
     t.index ["user_id"], name: "index_characters_on_user_id"
@@ -75,6 +76,15 @@ ActiveRecord::Schema.define(version: 2021_06_20_162739) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["positionable_type", "positionable_id"], name: "index_positions_on_positionable_type_and_positionable_id"
+  end
+
+  create_table "ships", force: :cascade do |t|
+    t.bigint "character_id"
+    t.string "battle_set", default: "default"
+    t.string "state"
+    t.integer "hitpoints"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "stars", force: :cascade do |t|
