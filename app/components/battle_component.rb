@@ -33,7 +33,7 @@ class BattleComponent < ApplicationComponent
   # TODO: probs extract this into a component that will be further managed by stimulus
   # that will use attributes to access and (re)render various bits as needed
   def draw_ship(ship)
-    div do
+    div(:class => "hover:border-primary border-2 rounded border-transparent cursor-pointer w-max p-1") do
       c draw_ship_stats(ship)
       c div(:class => "pt-1")
       c send("draw_#{ship.category}_ship", ship)
