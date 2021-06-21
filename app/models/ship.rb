@@ -6,4 +6,12 @@ class Ship < ApplicationRecord
   belongs_to :character
 
   scope :battle_set, ->(battle_set) { where(:battle_set => battle_set.presence || "default") }
+
+  # def friend_of?(character)
+  #   character.ships.exists?(:id => id)
+  # end
+
+  # def foe?
+  #   !friend?
+  # end
 end
