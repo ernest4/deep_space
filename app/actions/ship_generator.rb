@@ -28,12 +28,18 @@ class ShipGenerator < ApplicationAction
   end
 
   def call
-    Ship.new.tap do |ship|
-      ship.category = @category
-      ship.state = "ready"
-      ship.hitpoints = HITPOINTS[@category]
-      ship.name = generate_ship_name
-    end
+    # Ship.new.tap do |ship|
+    #   ship.category = @category
+    #   ship.state = "ready"
+    #   ship.hitpoints = HITPOINTS[@category]
+    #   ship.name = generate_ship_name
+    # end
+    ship = Ship.new
+    ship.category = @category
+    ship.state = "ready"
+    ship.hitpoints = HITPOINTS[@category.to_sym]
+    ship.name = generate_ship_name
+    ship
   end
 
   private

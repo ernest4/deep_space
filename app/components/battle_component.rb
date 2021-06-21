@@ -25,18 +25,27 @@ class BattleComponent < ApplicationComponent
     div(:class => "flex flex-col justify-between w-full #{right.presence && 'items-end'}") do
       character.active_battle_set_ships.each do |ship|
         c draw_ship(ship)
-        c div(:class => "pt-4")
+        c div(:class => "pt-8")
       end
     end
   end
 
+  # TODO: probs extract this into a component that will be further managed by stimulus
+  # that will use attributes to access and (re)render various bits as needed
   def draw_ship(ship)
-    # div do
-    # send("draw_#{ship.category}_ship", ship)
-    return draw_small_ship(ship) if ship.category == "small"
-    return draw_medium_ship(ship) if ship.category == "medium"
-    return draw_large_ship(ship) if ship.category == "large"
-    # end
+    div do
+      c draw_ship_stats(ship)
+      c div(:class => "pt-1")
+      c send("draw_#{ship.category}_ship", ship)
+    # return draw_small_ship(ship) if ship.category == "small"
+    # return draw_medium_ship(ship) if ship.category == "medium"
+    # return draw_large_ship(ship) if ship.category == "large"
+    end
+  end
+
+  def draw_ship_stats(ship)
+    # div("H #{ship.hitpoints} A #{ship.armourpoints}" S #{ship.shieldpoints} X #{ship.xp} L #{ship.level}")
+    div("H #{ship.hitpoints}", :class => "g-text-primary text-xs")
   end
 
   def draw_small_ship(ship)
