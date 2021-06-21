@@ -1,3 +1,4 @@
+# TODO: specs
 class BattleComponent < ApplicationComponent
   def initialize(battle_id:)
     @battle = Battle.find(battle_id)
@@ -38,15 +39,19 @@ class BattleComponent < ApplicationComponent
     # end
   end
 
-  def draw_small_ship(_ship)
-    div(:class => "w-10 h-4 bg-green-500")
+  def draw_small_ship(ship)
+    div(:class => "w-10 h-4 bg-green-500", :id => ship_id(ship))
   end
 
-  def draw_medium_ship(_ship)
-    div(:class => "w-20 h-8 bg-blue-500")
+  def draw_medium_ship(ship)
+    div(:class => "w-20 h-8 bg-blue-500", :id => ship_id(ship))
   end
 
-  def draw_large_ship(_ship)
-    div(:class => "w-40 h-16 bg-yellow-500")
+  def draw_large_ship(ship)
+    div(:class => "w-40 h-16 bg-yellow-500", :id => ship_id(ship))
+  end
+
+  def ship_id(ship)
+    "ship_#{ship.id}"
   end
 end
