@@ -3,8 +3,9 @@ class MatchmakingUpdateWorker
 
   def perform(battle_id)
     battle = Battle.find(battle_id)
-    return battle.start! if battle.full?
+    return MatchmakingUpdateWorker.perform_in(3.seconds, battle_id) unless battle.full?
 
-    MatchmakingUpdateWorker.perform_in(3.seconds, battle_id)
+    # battle.start!
+    BattleStartWorker.perform_async(battle_id)
   end
 end

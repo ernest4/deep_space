@@ -52,12 +52,8 @@ class Character < ApplicationRecord
   end
 
   def assign_default_ships
-    small_ship1 = ShipGenerator.call(:category => "small")
-    small_ship2 = ShipGenerator.call(:category => "small")
-    medium_ship1 = ShipGenerator.call(:category => "medium")
-    medium_ship2 = ShipGenerator.call(:category => "medium")
-    large_ship = ShipGenerator.call(:category => "large")
-    ships = [small_ship1, small_ship2, medium_ship1, medium_ship2, large_ship]
+    ship_category_counts = { :small => 6, :medium => 4, :large => 2}
+    ships = FleetGenerator.call(ship_category_counts)
     update!(:ships => ships)
   end
 
