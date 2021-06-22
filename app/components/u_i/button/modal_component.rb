@@ -7,6 +7,9 @@ module UI
         @button = button
         @modal = modal
         @content_id = SecureRandom.uuid
+
+        # TODO: stimulus useClickOutside for closing the modal
+        # https://github.com/stimulus-use/stimulus-use/blob/master/docs/use-click-outside.md
       end
 
       def call
