@@ -59,7 +59,7 @@ module UI
               "modal-content-id-value" => @content_id,
               :action => "click->modal#close"
             },
-            :class => "g-button-secondary g-small")
+            :class => "g-button-secondary g-button-small")
       end
     end
   end

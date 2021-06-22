@@ -84,7 +84,13 @@ class BattleComponent < ApplicationComponent
       :danger => opponent?(owner),
       :header => capitalize_each_word(ship.name),
       :body => div(:class => "") do
-        c "WIP SHIP IMAGE + stats + description + level etc"
+        c send("draw_#{ship.category}_ship", ship)
+        c div(:class => "pt-1")
+        # TODO: stats with bar for each
+        c draw_ship_stats(ship)
+        c div(:class => "pt-1")
+        # c "description" # TODO: wip some kinda dynamic description of it's, battles it has survived, veterancy etc
+        # c "level etc"
       end
     )
   end
@@ -95,9 +101,10 @@ class BattleComponent < ApplicationComponent
       :danger => opponent?(owner),
       :header => "Actions",
       :body => div(:class => "flex justify-between") do
-        c div("Attack") # TODO: really need hover now to show AC (Action Point Cost) ?
-        c div("Defend")
-        c div("Move")
+        # TODO: really need hover now to show what it will do and AC (Action Point Cost) ?
+        c div("Attack", :class => "g-button-secondary g-button-small")
+        c div("Defend", :class => "g-button-secondary g-button-small")
+        c div("Move", :class => "g-button-secondary g-button-small")
       end
     )
   end
