@@ -17,7 +17,10 @@ export default class extends ApplicationController {
       document.body.insertAdjacentElement("beforeend", hoverContentElement);
     }
 
-    // TODO: position at the cursor location
+    // TODO: position at the cursor location and away from screen bounds
+    // 1. determine where the trigger element / mouse is in relation to the window quadrants
+    // (upper left, upper right, bottom left, bottom right)
+    // 2. apply the style to the hover to be away from window edges
   }
 
   hide(event) {
