@@ -6,53 +6,48 @@ module Combat
 
     def initialize(battle_id:)
       @battle_id = battle_id
-      @ship_data = nil
+      @ship = nil
     end
 
     # TODO: namespace by character so the right character receives the change !!!
     stream_from "battle:#{@battle_id}:ship:select", :ship_select
 
     def ship_select(data)
-      @ship_data = data["ship"]
+      @ship = OpenStruct.new(data["ship"]) # x4 ~ x5 less marshalled data than using actual ActiveRecord model
       @opponent = data["opponent"]
     end
 
     def call
-      return div if @ship_data.blank?
+      return div if @ship.blank?
 
       div(:class => "fixed w-full bottom-0") do
         c div(:class => "g-text flex justify-between") {
-          # c ship_sub_commander(ship, owner)
-          # c div(:class => "pt-2")
-          # c ship_description(ship, owner)
-          # unless opponent?(owner)
-          #   c div(:class => "pt-2")
-          #   c ship_actions(ship, owner)
-          # end
-          c @ship_data.to_s
+          c ship_sub_commander(@ship, @opponent)
+          c div(:class => "pt-2")
+          c ship_description(@ship, @opponent)
+          unless @opponent
+            c div(:class => "pt-2")
+            c ship_actions(@ship)
+          end
         }
         c div(:class => "pt-4")
       end
     end
 
-    def ship_sub_commander(_ship, owner)
+    def ship_sub_commander(_ship, opponent)
       UI::CardComponent.new(
-        :danger => opponent?(owner),
+        :danger => opponent,
         :header => "Sub-Commander",
         :body => "Commander Feature Coming Soon"
       )
     end
 
-    def opponent?(owner)
-      owner == "opponent"
-    end
-
-    def ship_description(ship, owner)
+    def ship_description(ship, opponent)
       UI::CardComponent.new(
-        :danger => opponent?(owner),
+        :danger => opponent,
         :header => capitalize_each_word(ship.name),
         :body => div(:class => "") do
-          c send("draw_#{ship.category}_ship", ship)
+          c Combat::Ship::GraphicComponent.new(:ship => ship)
           c div(:class => "pt-1")
           # TODO: stats with bar for each
           c draw_ship_stats(ship)
@@ -63,14 +58,19 @@ module Combat
       )
     end
 
+    # TODO: extract to helper lib
     def capitalize_each_word(string)
       string.split(" ").map(&:capitalize).join(" ")
     end
 
-    def ship_actions(_ship, owner)
+    def draw_ship_stats(ship)
+      # div("H #{ship.hitpoints} A #{ship.armourpoints}" S #{ship.shieldpoints} X #{ship.xp} L #{ship.level}")
+      div("H #{ship.hitpoints}", :class => "g-text-primary text-xs")
+    end
+
+    def ship_actions(_ship)
       # TODO: special extra actions depending on ship configuration
       UI::CardComponent.new(
-        :danger => opponent?(owner),
         :header => "Your orders Commander?",
         :body => div(:class => "flex justify-between") do
           # TODO: really need hover now to show what it will do and AC (Action Point Cost) ?
