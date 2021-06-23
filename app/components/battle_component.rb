@@ -99,10 +99,15 @@ class BattleComponent < ApplicationComponent
     # TODO: special extra actions depending on ship configuration
     UI::CardComponent.new(
       :danger => opponent?(owner),
-      :header => "Actions",
+      :header => "Your orders Commander?",
       :body => div(:class => "flex justify-between") do
         # TODO: really need hover now to show what it will do and AC (Action Point Cost) ?
-        c div("Attack", :class => "g-button-secondary g-button-small")
+        c UI::HoverComponent.new(
+          :trigger => div("Attack", :class => "g-button-secondary g-button-small"),
+          :hover => UI::CardComponent.new(
+            :body => "Attack hover testing wip"
+          )
+        )
         c div("Defend", :class => "g-button-secondary g-button-small")
         c div("Move", :class => "g-button-secondary g-button-small")
       end

@@ -27,6 +27,5 @@
     <%= render NavbarComponent.new %>
     <!-- TODO: cookies footer? Privacy policy footer? chat footer when logged in? -->
     <%= yield(:footer) if content_for?(:footer) %>
-    <%= yield(:hover) if content_for?(:hover) %>
   </body>
 </html>

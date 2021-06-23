@@ -4,14 +4,13 @@ export default class extends ApplicationController {
   static targets = ["content"];
   static values = { contentId: String };
 
-  connect() {
-    // this.outputTarget.textContent = "Hello, Stimulus!";
-  }
+  connect() {}
 
   show() {
     const modalContentElement = document.getElementById(this.contentIdValue);
     modalContentElement.classList.remove("hidden");
-    // document.body.innerHTML += '<div class="modal-backdrop fade show"></div>';
+
+    // position at end for Z ordering
     document.body.insertAdjacentElement("beforeend", modalContentElement);
   }
 
