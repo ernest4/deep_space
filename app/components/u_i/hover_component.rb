@@ -18,19 +18,13 @@ module UI
     end
 
     def trigger
-      div(:data => { :action => "mouseover->hover#show mouseout->hover#hide" }) { @trigger }
+      div(:data => { :action => "mousemove->hover#show mouseleave->hover#hide" }) { @trigger }
     end
 
     def hover
-      div(:class => "bg-green-500 hidden fixed h-72 overflow-scroll", :data => { "hover-target" => "content", :controller => "hover", :action => "mouseover->hover#show mouseout->hover#hide", "hover-content-id-value" => @content_id, }, :id => @content_id) do
-        c div(:class => "flex") {
-          c div(:class => "pl-4")
-          c div {
-            c div(:class => "pt-4")
-            c @hover
-          }
-          c div(:class => "pl-4")
-        }
+      # div(:class => "hidden fixed", :data => { "hover-target" => "content", :controller => "hover", :action => "mouseenter->hover#show mouseleave->hover#hide", "hover-content-id-value" => @content_id }, :id => @content_id) do
+      div(:class => "hidden fixed", :data => { "hover-target" => "content" }, :id => @content_id) do
+        c @hover
       end
     end
   end

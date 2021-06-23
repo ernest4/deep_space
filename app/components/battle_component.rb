@@ -105,7 +105,7 @@ class BattleComponent < ApplicationComponent
         c UI::HoverComponent.new(
           :trigger => div("Attack", :class => "g-button-secondary g-button-small"),
           :hover => UI::CardComponent.new(
-            :body => "Attack hover testing wip"
+            :body => "Attack hover testing"
           )
         )
         c div("Defend", :class => "g-button-secondary g-button-small")

@@ -8,8 +8,10 @@ export default class extends ApplicationController {
 
   show(event) {
     const hoverContentElement = document.getElementById(this.contentIdValue);
-    hoverContentElement.style.top = `${event.y}px`;
-    hoverContentElement.style.left = `${event.x}px`;
+
+    const offset = 4;
+    hoverContentElement.style.top = `${event.y + offset}px`;
+    hoverContentElement.style.left = `${event.x + offset}px`;
 
     if (Array.from(hoverContentElement.classList).indexOf("hidden") !== -1) {
       hoverContentElement.classList.remove("hidden");
@@ -23,10 +25,7 @@ export default class extends ApplicationController {
     // 2. apply the style to the hover to be away from window edges
   }
 
-  hide(event) {
-    // debugger;
-
-    // if (event.toElement.offsetParent.id == this.contentIdValue) return;
+  hide() {
     document.getElementById(this.contentIdValue).classList.add("hidden");
   }
 }
