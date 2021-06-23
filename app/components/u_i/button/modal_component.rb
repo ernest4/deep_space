@@ -31,7 +31,7 @@ module UI
       # end
 
       def button
-        div(:data => { :action => "click->modal#show" }) { @button }
+        div(:data => { :action => "click->modal#show" }, :class => "w-max") { @button }
       end
 
       def modal
@@ -62,7 +62,7 @@ module UI
               "modal-content-id-value" => @content_id,
               :action => "click->modal#close"
             },
-            :class => "g-button-secondary g-button-small")
+            :class => "g-button-danger g-button-small")
       end
     end
   end

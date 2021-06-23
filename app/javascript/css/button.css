@@ -1,9 +1,9 @@
 @layer components {
   .g-button {
-    @apply g-container py-2 px-6 cursor-pointer hover:bg-gray-500 hover:bg-opacity-75;
+    @apply g-container py-2 px-6 cursor-pointer hover:bg-white;
   }
   .g-button-primary {
-    @apply g-button bg-primary border-primary;
+    @apply g-button bg-primary border-primary hover:text-primary;
   }
   /* .g-button-primary-alt {
     @apply g-button g-bg-secondary-gradient;
@@ -13,7 +13,10 @@
     @apply g-button bg-blue-700;
   } */
   .g-button-secondary {
-    @apply g-button bg-secondary border-secondary;
+    @apply g-button bg-secondary border-secondary hover:bg-white hover:text-secondary;
+  }
+  .g-button-danger {
+    @apply g-button bg-danger border-danger hover:bg-white hover:text-danger;
   }
   /*
   .g-button-tertiary {
