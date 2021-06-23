@@ -40,6 +40,9 @@ gem 'google_sign_in'
 gem 'sidekiq'
 gem 'sidekiq-cron'
 
+# front end magic
+gem 'motion', '~> 0.5'
+
 # TODO:
 # # error tracking
 # gem 'rollbar'

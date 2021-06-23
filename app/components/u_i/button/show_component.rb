@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TODO: buggy
 module UI
   module Button
     class ShowComponent < ApplicationComponent

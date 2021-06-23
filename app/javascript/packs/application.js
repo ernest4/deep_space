@@ -14,3 +14,4 @@ ActiveStorage.start();
 
 import "controllers";
 import "../css/application.css";
+import "motion";

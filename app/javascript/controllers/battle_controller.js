@@ -1,5 +1,5 @@
 import { ApplicationController } from "stimulus-use";
-import consumer from "../channels/consumer";
+// import consumer from "../channels/consumer";
 
 export default class extends ApplicationController {
   static targets = ["footer", "ship:container", "ship"];
@@ -45,7 +45,7 @@ export default class extends ApplicationController {
   shipClick() {
     // const response = fetch()
     // this.footerTarget.innerHtml = response.data;
-    this.footerTarget.innerHtml = `<div data-controller="async" data-async-url-value="/battle/${this.battleIdValue}/footer"></div>`;
+    // this.footerTarget.innerHtml = `<div data-controller="async" data-async-url-value="/battle/${this.battleIdValue}/footer"></div>`;
   }
 
   // show() {
