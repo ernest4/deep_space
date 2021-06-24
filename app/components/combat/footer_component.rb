@@ -8,6 +8,7 @@ module Combat
       @battle_id = battle_id
       @ship = nil
       @character_id = Current.character.id
+      @action_hover_anchor_id = SecureRandom.uuid
 
       # NOTE: need to call this here to have access to instance variables!!!
       stream_from "battle:#{battle_id}:character:#{@character_id}:ship:select", :ship_select
@@ -29,6 +30,9 @@ module Combat
 
       div(:class => "fixed w-full bottom-0 left-0") do
         c div(:class => "g-text grid grid-cols-3") {
+          c div
+          c div
+          c div(:id => @action_hover_anchor_id)
           c ship_sub_commander(@ship, @opponent)
           c ship_description(@ship, @opponent)
           c ship_actions(@ship) unless @opponent
@@ -87,7 +91,8 @@ module Combat
               :body => div do
                 "Attack hover testing"
               end
-            )
+            ),
+            :anchor_id => @action_hover_anchor_id
           )
           c div("Defend", :class => "g-button-secondary g-button-small text-center")
           c div("Move", :class => "g-button-secondary g-button-small text-center")

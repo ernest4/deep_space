@@ -2,7 +2,7 @@ import { ApplicationController } from "stimulus-use";
 
 export default class extends ApplicationController {
   static targets = ["content"];
-  static values = { contentId: String };
+  static values = { contentId: String, anchorId: String };
 
   connect() {}
 
@@ -10,13 +10,23 @@ export default class extends ApplicationController {
     const hoverContentElement = document.getElementById(this.contentIdValue);
 
     const offset = 4;
-    hoverContentElement.style.top = `${event.y + offset}px`;
-    hoverContentElement.style.left = `${event.x + offset}px`;
+    if (!this.hasAnchorIdValue) {
+      hoverContentElement.style.top = `${event.y + offset}px`;
+      hoverContentElement.style.left = `${event.x + offset}px`;
+    }
 
     if (Array.from(hoverContentElement.classList).indexOf("hidden") !== -1) {
       hoverContentElement.classList.remove("hidden");
+
+      console.log(this.hasAnchorIdValue);
+      console.log(this.anchorIdValue);
       // position at end for Z ordering
-      document.body.insertAdjacentElement("beforeend", hoverContentElement);
+      if (this.hasAnchorIdValue) {
+        const hoverAnchorElement = document.getElementById(this.anchorIdValue);
+        hoverAnchorElement.insertAdjacentElement("beforeend", hoverContentElement);
+      } else {
+        document.body.insertAdjacentElement("beforeend", hoverContentElement);
+      }
     }
 
     // TODO: position at the cursor location and away from screen bounds
