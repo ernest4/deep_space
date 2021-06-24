@@ -24,7 +24,7 @@ module UI
 
     def hover
       # div(:class => "hidden fixed", :data => { "hover-target" => "content", :controller => "hover", :action => "mouseenter->hover#show mouseleave->hover#hide", "hover-content-id-value" => @content_id }, :id => @content_id) do
-      div(:class => "hidden fixed fixed bg-gray-700 bg-opacity-90 hidden", :data => { "hover-target" => "content" }, :id => @content_id) do
+      div(:class => "hidden fixed fixed hidden", :data => { "hover-target" => "content" }, :id => @content_id) do
         c @hover
       end
     end

@@ -28,7 +28,7 @@ class BattleComponent < ApplicationComponent
     div(:class => "flex flex-col justify-between w-full #{opponent?(owner) && 'items-end'}") do
       character.active_battle_set_ships.each do |ship|
         c Combat::Ship::ContainerComponent.new(
-          :battle_id => @battle_id,
+          :battle_id => @battle.id,
           :ship_data => ship.attributes,
           :opponent => opponent?(owner)
         )

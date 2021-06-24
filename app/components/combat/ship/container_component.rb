@@ -9,6 +9,8 @@ module Combat
         @battle_id = battle_id
         @ship = OpenStruct.new(ship_data)
         @opponent = opponent
+        # debugger
+        @character_id = Current.character.id
       end
 
       def opponent?
@@ -19,7 +21,7 @@ module Combat
 
       def click
         ActionCable.server.broadcast(
-          "battle:#{@battle_id}:ship:select",
+          "battle:#{@battle_id}:character:#{@character_id}:ship:select",
           { :ship => @ship.to_h, :opponent => @opponent }
         )
       end

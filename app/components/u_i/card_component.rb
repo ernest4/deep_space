@@ -2,12 +2,13 @@
 
 module UI
   class CardComponent < ApplicationComponent
-    def initialize(body:, header: nil, footer: nil, primary: false, danger: false)
+    def initialize(body:, header: nil, footer: nil, primary: false, danger: false, style: nil)
       @header = header
       @body = body
       @footer = footer
       @primary = primary
       @danger = danger
+      @style = style
     end
 
     def call
@@ -23,7 +24,7 @@ module UI
     private
 
     def container(&block)
-      div(:class => container_class) do
+      div(:class => "#{container_class} #{@style}") do
         block.call
       end
     end

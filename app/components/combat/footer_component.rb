@@ -7,6 +7,7 @@ module Combat
     def initialize(battle_id:)
       @battle_id = battle_id
       @ship = nil
+      @character_id = Current.character.id
     end
 
     map_motion :close
@@ -16,9 +17,10 @@ module Combat
     end
 
     # TODO: namespace by character so the right character receives the change !!!
-    stream_from "battle:#{@battle_id}:ship:select", :ship_select
+    stream_from "battle:#{@battle_id}:character:#{@character_id}:ship:select", :ship_select
 
     def ship_select(data)
+      # debugger
       @ship = OpenStruct.new(data["ship"]) # x4 ~ x5 less marshalled data than using actual ActiveRecord model
       @opponent = data["opponent"]
     end
@@ -38,6 +40,7 @@ module Combat
 
     def ship_sub_commander(_ship, opponent)
       UI::CardComponent.new(
+        :style => "bg-gray-700 bg-opacity-80",
         :danger => opponent,
         :header => "Sub-Commander",
         :body => "Commander Feature Coming Soon"
@@ -46,6 +49,7 @@ module Combat
 
     def ship_description(ship, opponent)
       UI::CardComponent.new(
+        :style => "bg-gray-700 bg-opacity-80",
         :danger => opponent,
         :header => capitalize_each_word(ship.name),
         :body => div(:class => "") do
@@ -73,13 +77,17 @@ module Combat
     def ship_actions(_ship)
       # TODO: special extra actions depending on ship configuration
       UI::CardComponent.new(
+        :style => "bg-gray-700 bg-opacity-80",
         :header => "Your orders Commander?",
         :body => div(:class => "grid grid-cols-3 gap-1") do
           # TODO: really need hover now to show what it will do and AC (Action Point Cost) ?
           c UI::HoverComponent.new(
             :trigger => div("Attack", :class => "g-button-secondary g-button-small text-center"),
             :hover => UI::CardComponent.new(
-              :body => "Attack hover testing"
+              :style => "bg-gray-700 bg-opacity-90",
+              :body => div do
+                "Attack hover testing"
+              end
             )
           )
           c div("Defend", :class => "g-button-secondary g-button-small text-center")

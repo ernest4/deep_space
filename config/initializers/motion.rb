@@ -16,8 +16,7 @@ Motion.configure do |config|
   # If you prefer to use git or an environmental variable for the revision
   # in production, define the revision directly below.
   #
-  #     config.revision =
-  #       ENV.fetch("MY_DEPLOYMENT_NUMBER") { `git rev-parse HEAD`.chomp }
+  config.revision = ENV.fetch("MY_DEPLOYMENT_NUMBER") { `git rev-parse HEAD`.chomp }
   #
   # Using a value that does not change on every deployment will likely lead to
   # confusing errors if components are connected during a deployment.
