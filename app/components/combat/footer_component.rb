@@ -8,6 +8,9 @@ module Combat
       @battle_id = battle_id
       @ship = nil
       @character_id = Current.character.id
+
+      # NOTE: need to call this here to have access to instance variables!!!
+      stream_from "battle:#{battle_id}:character:#{@character_id}:ship:select", :ship_select
     end
 
     map_motion :close
@@ -16,11 +19,7 @@ module Combat
       @ship = nil
     end
 
-    # TODO: namespace by character so the right character receives the change !!!
-    stream_from "battle:#{@battle_id}:character:#{@character_id}:ship:select", :ship_select
-
     def ship_select(data)
-      # debugger
       @ship = OpenStruct.new(data["ship"]) # x4 ~ x5 less marshalled data than using actual ActiveRecord model
       @opponent = data["opponent"]
     end
