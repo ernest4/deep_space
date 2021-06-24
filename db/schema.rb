@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_20_201749) do
+ActiveRecord::Schema.define(version: 2021_06_24_090856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,19 @@ ActiveRecord::Schema.define(version: 2021_06_20_201749) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "category"
     t.string "name"
+    t.integer "max_hitpoints"
+    t.integer "evasiveness_percent"
+    t.integer "accuracy_percent"
+    t.integer "armour"
+    t.integer "max_armour"
+    t.integer "shields"
+    t.integer "max_shields"
+    t.integer "xp"
+    t.integer "kills"
+    t.integer "shots"
+    t.integer "hits"
+    t.integer "evasions"
+    t.bigint "sub_commander_id"
   end
 
   create_table "stars", force: :cascade do |t|
