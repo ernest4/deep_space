@@ -9,6 +9,12 @@ module Combat
       @ship = nil
     end
 
+    map_motion :close
+
+    def close
+      @ship = nil
+    end
+
     # TODO: namespace by character so the right character receives the change !!!
     stream_from "battle:#{@battle_id}:ship:select", :ship_select
 
@@ -20,15 +26,11 @@ module Combat
     def call
       return div if @ship.blank?
 
-      div(:class => "fixed w-full bottom-0") do
-        c div(:class => "g-text flex justify-between") {
+      div(:class => "fixed w-full bottom-0 left-0") do
+        c div(:class => "g-text grid grid-cols-3") {
           c ship_sub_commander(@ship, @opponent)
-          c div(:class => "pt-2")
           c ship_description(@ship, @opponent)
-          unless @opponent
-            c div(:class => "pt-2")
-            c ship_actions(@ship)
-          end
+          c ship_actions(@ship) unless @opponent
         }
         c div(:class => "pt-4")
       end
@@ -72,16 +74,22 @@ module Combat
       # TODO: special extra actions depending on ship configuration
       UI::CardComponent.new(
         :header => "Your orders Commander?",
-        :body => div(:class => "flex justify-between") do
+        :body => div(:class => "grid grid-cols-3 gap-1") do
           # TODO: really need hover now to show what it will do and AC (Action Point Cost) ?
           c UI::HoverComponent.new(
-            :trigger => div("Attack", :class => "g-button-secondary g-button-small"),
+            :trigger => div("Attack", :class => "g-button-secondary g-button-small text-center"),
             :hover => UI::CardComponent.new(
               :body => "Attack hover testing"
             )
           )
-          c div("Defend", :class => "g-button-secondary g-button-small")
-          c div("Move", :class => "g-button-secondary g-button-small")
+          c div("Defend", :class => "g-button-secondary g-button-small text-center")
+          c div("Move", :class => "g-button-secondary g-button-small text-center")
+          c div
+          c div
+          c div
+          c div
+          c div
+          c div("Close", :class => "g-button-danger g-button-small text-center", :data => { :motion => :close })
         end
       )
     end

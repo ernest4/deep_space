@@ -10,6 +10,7 @@ class BattleComponent < ApplicationComponent
       # c TestyMotionComponent.new
       c Combat::HeaderComponent.new
       c ships
+      c div(:class => "pt-96")
       c Combat::FooterComponent.new(:battle_id => @battle_id)
     end
   end
