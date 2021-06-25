@@ -5,5 +5,6 @@ class Hull < ApplicationRecord
 
   states [:repairing, :ready]
 
-  composer :ships
+  composable
+  composers :ships
 end

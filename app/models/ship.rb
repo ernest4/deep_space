@@ -24,6 +24,7 @@ class Ship < ApplicationRecord
   # t.integer :evasions
   # t.bigint :sub_commander_id
 
+  composer
   composes :hulls
   # composes :engines
   # composes :amours

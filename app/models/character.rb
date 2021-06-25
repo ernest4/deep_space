@@ -1,16 +1,18 @@
 # TODO: SPECS
 class Character < ApplicationRecord
-  STATES = ["seeking_battle", "waiting_battle", "battling"].freeze
   include Stateful
+  include Occupiable
+
+  states [:seeking_battle, :waiting_battle, :battling]
 
   belongs_to :user
   # has_one :position, :as => :positionable, :dependent => :destroy
 
-  has_many :occupations
-  has_many :planets, :through => :occupations, :source => :occupiable, :source_type => 'Planet'
-  has_many :stars, :through => :occupations, :source => :occupiable, :source_type => 'Star'
-  has_many :stations, :through => :occupations, :source => :occupiable, :source_type => 'Station'
-  has_many :asteroids, :through => :occupations, :source => :occupiable, :source_type => 'Asteroid'
+  occupier
+  occupies :planets
+  occupies :stars
+  occupies :stations
+  occupies :asteroids
 
   has_many :participations
   has_many :battles, :through => :participations, :source => :participatable, :source_type => 'Battle'
