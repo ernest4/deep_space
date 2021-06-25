@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_24_090856) do
+ActiveRecord::Schema.define(version: 2021_06_25_093652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,28 @@ ActiveRecord::Schema.define(version: 2021_06_24_090856) do
     t.index ["name"], name: "index_characters_on_name", unique: true
     t.index ["state"], name: "index_characters_on_state"
     t.index ["user_id"], name: "index_characters_on_user_id"
+  end
+
+  create_table "components", force: :cascade do |t|
+    t.bigint "composable_id"
+    t.string "composable_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "composer_id"
+    t.string "composer_type"
+    t.index ["composable_type", "composable_id"], name: "index_components_on_composable_type_and_composable_id"
+    t.index ["composer_type", "composer_id"], name: "index_components_on_composer_type_and_composer_id"
+  end
+
+  create_table "hulls", force: :cascade do |t|
+    t.string "state"
+    t.bigint "xp"
+    t.string "name"
+    t.text "description"
+    t.bigint "integrity"
+    t.bigint "max_integrity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "occupations", force: :cascade do |t|
@@ -82,24 +104,12 @@ ActiveRecord::Schema.define(version: 2021_06_24_090856) do
     t.bigint "character_id"
     t.string "battle_set", default: "default"
     t.string "state"
-    t.integer "hitpoints"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "category"
     t.string "name"
-    t.integer "max_hitpoints"
-    t.integer "evasiveness_percent"
-    t.integer "accuracy_percent"
-    t.integer "armour"
-    t.integer "max_armour"
-    t.integer "shields"
-    t.integer "max_shields"
-    t.integer "xp"
-    t.integer "kills"
-    t.integer "shots"
-    t.integer "hits"
-    t.integer "evasions"
     t.bigint "sub_commander_id"
+    t.index ["sub_commander_id"], name: "index_ships_on_sub_commander_id"
   end
 
   create_table "stars", force: :cascade do |t|

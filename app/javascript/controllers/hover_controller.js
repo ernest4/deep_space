@@ -18,8 +18,6 @@ export default class extends ApplicationController {
     if (Array.from(hoverContentElement.classList).indexOf("hidden") !== -1) {
       hoverContentElement.classList.remove("hidden");
 
-      console.log(this.hasAnchorIdValue);
-      console.log(this.anchorIdValue);
       // position at end for Z ordering
       if (this.hasAnchorIdValue) {
         const hoverAnchorElement = document.getElementById(this.anchorIdValue);
